@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Esta es mi primera pagina dinamica -->
+<!-- Esta es la pagina de listado de categoria -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:th="http://www.thymeleaf.org">
@@ -9,11 +9,12 @@
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}" />
+        <h3>Aca ira el listado de categorias</h3>
         
-        <section th:replace="~{pruebas/fragmentos :: tarjetas}" />
+        <section th:replace="~{categoria/fragmentos :: editarCategoria}" />
         
         <footer th:replace="~{layout/plantilla :: footer}"/>
-
+        
     </body>
-
+    
 </html>
