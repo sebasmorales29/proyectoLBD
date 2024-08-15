@@ -21,26 +21,57 @@
         </section>
 
         <!-- 2 Seccion para mostrar las tarjetas de los pruductos-->
-        <section th:fragment="tarjetas" class="bg-light">
-            <div class="row row-cols-4">
-                <div class="card" th:each="p : ${productos}">
-                    <figure>
-                        <img th:src="${p.rutaImagen}"
-                             height="200"
-                             alt="alt"/>
-                        <figcaption>
-                            $[[${p.precio}]] ([[${p.existencias}]])
-                    </figure>
-                    <div class="card-header">
-                        <h4>[[${p.descripcion}]]</h4>
-                    </div> 
-                    <div class="card-body">
-                        <p>[[${p.detalle}]]</p> 
+        <section th:fragment="tarjetas" class="bg-light py-4">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    <div class="col" th:each="p : ${productos}">
+                        <div class="card h-100 shadow-sm">
+                            <img th:src="${p.rutaImagen}" class="card-img-top" alt="alt" style="height: 200px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">[[${p.descripcion}]]</h5>
+                                    <p class="card-text">[[${p.detalle}]]</p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">$[[${p.precio}]] ([[${p.existencias}]])</span>
+                                </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
+         <!-- 3 Seccion para mostrar las tarjetas de los pruductos en carrusel-->
+        <section th:fragment="carrusel" class="bg-light py-4">
+            <div class="container">
+                <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" style="background-color: #f8f9fa;">
+                    <div class="carousel-inner">
+                        <div th:each="p, iterStat : ${productos}">
+                            <div class="carousel-item" th:classappend="${iterStat.index == 0} ? 'active'">
+                                <div class="row row-cols-1 g-4">
+                                    <div class="col">
+                                        <div class="card h-100 shadow-sm" style="border: none; background-color: #f8f9fa;">
+                                            <img th:src="${p.rutaImagen}" class="card-img-top" alt="alt" style="height: 750px; object-fit: cover;">
+                                                <div class="card-body text-center">
+                                                    <h5 class="card-title">[[${p.descripcion}]]</h5>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
         </section>
 
-        <!-- 3 Sección  para crear las consultas especiales-->
+        <!-- 4 Sección  para crear las consultas especiales-->
         <section th:fragment="consultas" class="bg-light">
             <div class="row p-4">
                 <div class="row row-cols-3 m-2">
@@ -172,7 +203,7 @@
                             </div>
                         </form>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
