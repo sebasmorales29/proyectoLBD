@@ -9,9 +9,7 @@
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}" />
-        <h3>Aca ira el listado de productos</h3>
-        
-        <section th:replace="~{producto/fragmentos :: botonesAgregar}" />
+
         <section th:replace="~{producto/fragmentos :: agregarProducto}" />
         <section th:replace="~{producto/fragmentos :: listadoProductos}" />
         <footer th:replace="~{layout/plantilla :: footer}"/>
