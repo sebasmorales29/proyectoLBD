@@ -11,6 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Ema
  */
-public interface FacturaDao extends JpaRepository<Factura,Long>{
-    
+public interface FacturaDao extends JpaRepository <Factura,Long> {
+     
 }

@@ -11,6 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Ema
  */
-public interface VentaDao extends JpaRepository<Venta,Long>{
-    
+public interface VentaDao extends JpaRepository <Venta,Long> {
+     
 }

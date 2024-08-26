@@ -1,8 +1,5 @@
 /* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
- * 
- * Esta funcion carga la info de una imagen y la coloca en una etiqueta img
+ esta funcion carga la informacion de una imagen y la coloca en una etiquetea img
  */
 
 function readURL(input) {
@@ -13,17 +10,17 @@ function readURL(input) {
                     .attr('src', e.target.result)
                     .height(200);
         };
-        reader.readAsDataURL(input.files[0]);
+        reader.readAsDataUrl(input.files[0]);
     }
 }
 
-    function addCart(formulario) {
-        var idProducto = formulario.element[0].value;
-        var existencias = formulario.element[0].value;
-        if (existencias > 0) {
-            var url = "/carrito/agregar/" + idProducto;
-            $("#resultsBlock").load(url);
-        } else {
-            window.alert("No hay existencias...");
-        }
+function addCart(formulario) {
+    var idProducto = formulario.elements[0].value;
+    var existencias = formulario.elements[1].value;
+    if (existencias > 0) {
+        var url = "/carrito/agregar/" + idProducto;
+        $("#resultsBlock").load(url);
+    } else {
+        window.alert("No hay existencias...");
     }
+}
