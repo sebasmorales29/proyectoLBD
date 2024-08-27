@@ -5,7 +5,7 @@
     <head th:replace="~{layout/plantilla :: head}">
         <title>PaMonchar</title>
     </head>
-    <body>
+    <body >
         <!-- 1 Sección tabs para las categorias-->
         <section th:fragment="tabsCategorias" class="bg-light">
             <div class="row p-4">
@@ -21,31 +21,30 @@
         </section>
 
         <!-- 2 Seccion para mostrar las tarjetas de los pruductos-->
-        <section th:fragment="tarjetas" class="bg-light">
-            <div class="row row-cols-4">
-                <div class="card" th:each="p : ${productos}">
-                    <figure>
-                        <img th:src="${p.rutaImagen}"
-                             height="200"
-                             alt="alt"/>
-                        <figcaption class="d-flex justify-content-evenly">
-                            $[[${p.precio}]] ([[${p.existencias}]])
-                            <form>
-                                <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
-                                <input type="hidden" name="existencias" th:value="${p.existencias}" />
-                                <button class ="btn btn-light"
-                                        type="button" 
-                                        onclick="addCart(this.form)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </form>
-                        </figcaption>
-                    </figure>
-                    <div class="card-header">
-                        <h4>[[${p.descripcion}]]</h4>
-                    </div> 
-                    <div class="card-body">
-                        <p>[[${p.detalle}]]</p> 
+      <section th:fragment="tarjetas" class="bg-light py-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col" th:each="p : ${productos}">
+                    <div class="card shadow-sm border-0 rounded-lg h-100">
+                        <figure class="mb-0">
+                            <img th:src="${p.rutaImagen}" class="card-img-top" height="200" alt="alt"/>
+                            <figcaption class="d-flex justify-content-between align-items-center p-2 bg-light">
+                                <span class="fw-bold">$[[${p.precio}]]</span>
+                                <span class="text-muted">([[${p.existencias}]])</span>
+                                <form class="d-inline">
+                                    <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
+                                    <input type="hidden" name="existencias" th:value="${p.existencias}" />
+                                    <button class="btn btn-light border" type="button" onclick="addCart(this.form)">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                </form>
+                            </figcaption>
+                        </figure>
+                        <div class="card-header bg-dark text-white text-center">
+                            <h4 class="mb-0">[[${p.descripcion}]]</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">[[${p.detalle}]]</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -53,7 +52,7 @@
 
 
         <!-- 3 Seccion para mostrar las tarjetas de los pruductos en carrusel-->
-        <section th:fragment="carrusel" class="bg-light py-4">
+        <section th:fragment="carrusel" style="background-color: #f8f4e8;">
             <div class="container">
                 <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" style="background-color: #f8f9fa;">
                     <div class="carousel-inner">
