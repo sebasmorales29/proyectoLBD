@@ -19,11 +19,6 @@
                         </div>
                         <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
-                                
-                                 <div class="mb-3">
-                                    <label for="username" class="form-label"><i class="fas fa-user"></i>[[#{usuario.username}]]</label>
-                                    <input type="text" class="form-control" name="username" required="true"/>
-                                </div>
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">[[#{usuario.nombre}]]</label>
                                     <input type="text" class="form-control" name="nombre" required="true"/>
@@ -31,6 +26,10 @@
                                 <div class="mb-3">
                                     <label for="apellidos" class="form-label">[[#{usuario.apellidos}]]</label>
                                     <input type="text" class="form-control" name="apellidos" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label"><i class="fas fa-user"></i>[[#{usuario.username}]]</label>
+                                    <input type="text" class="form-control" name="username" required="true"/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label"><i class="fas fa-envelope"></i> [[#{usuario.correo}]]</label>
