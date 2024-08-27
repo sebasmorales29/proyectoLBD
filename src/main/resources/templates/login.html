@@ -25,13 +25,21 @@
                                     <label for="password" class="form-label"><i class="fas fa-key"></i> [[#{login.password}]]:</label>
                                     <input class="form-control" type="password" name="password" id="password" required/>
                                 </div>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-light btn-block text-dark" type="submit">
-                                        <i class="fas fa-sign-in-alt"></i> [[#{login.login}]]
-                                    </button>
-                                    <a th:href="@{/registro/nuevo}" class="btn btn-light btn-block text-dark"><i class="fas fa-user-plus"></i> [[#{accion.registrar}]]</a>
-                                    <a th:href="@{/registro/recordar}" class="btn btn-light btn-block text-dark"><i class="fas fa-envelope"></i> [[#{accion.recordar}]]</a>
+                                <div class="d-flex justify-content-center" style="margin-top: 40px;">
+                                    <div class="d-grid gap-2" style="width: 250px;">
+                                        <button class="btn btn-light btn-block text-dark" type="submit" style="width: 90%; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-sign-in-alt" style="margin-right: 5px;"></i> [[#{login.login}]]
+                                        </button>
+                                        <a th:href="@{/registro/nuevo}" class="btn btn-light btn-block text-dark" style="width: 90%; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-user-plus" style="margin-right: 5px;"></i> [[#{accion.registrar}]]
+                                        </a>
+                                        <a th:href="@{/registro/recordar}" class="btn btn-light btn-block text-dark" style="width: 90%; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-envelope" style="margin-right: 5px;"></i> [[#{accion.recordar}]]
+                                        </a>
+                                    </div>
+
                                 </div>
+
                             </form>
                         </div>
                     </div>
