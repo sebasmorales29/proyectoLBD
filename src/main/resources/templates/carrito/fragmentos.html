@@ -108,7 +108,7 @@
         <section th:fragment="modificaItem">
             <div class="row justify-content-start">
                 <div class="col-md-3">
-                    <div class="card text-center bg-white text-black mb-3 shadow-sm">
+                    <div class="col-md-4 d-grid">
                         <div class="card-body">
                             <a th:href="@{/carrito/listado}" class="btn btn-block" style="background-color: white; color: black; font-weight: bold;">
                                 <i class='fas fa-reply'></i> [[#{accion.regresar}]]
@@ -116,49 +116,48 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card shadow-lg">
-                        <div class="card-header bg-dark text-white text-center">
-                            <h4><i class="fas fa-info-circle"></i> [[#{carrito.datos}]]</h4>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">[[${item.descripcion}]]</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-end">
-                                [[${item.precio}+' ('+${item.existencias}+')']]
-                            </h6>
-                            <p class="card-text">[[${item.detalle}]]</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card shadow-lg">
+                            <div class="card-header bg-dark text-white text-center">
+                                <h4><i class="fas fa-info-circle"></i> [[#{carrito.datos}]]</h4>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">[[${item.descripcion}]]</h5>
+                                <h6 class="card-subtitle mb-2 text-muted text-end">
+                                    [[${item.precio}+' ('+${item.existencias}+')']]
+                                </h6>
+                                <p class="card-text">[[${item.detalle}]]</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card shadow-lg">
-                        <div class="card-body text-center">
-                            <figure><img th:src="@{${item.rutaImagen}}" width="260" class="img-fluid"/></figure>
-                            <form th:action="@{/carrito/guardar}" method="post" th:object="${item}" class="was-validated">
-                                <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
-                                <div class="mb-3">
-                                    <label for="cantidad" class="form-label"><i class="fas fa-box"></i> [[#{carrito.cantidad}]]:</label>
-                                    <input type="number" name="cantidad" th:field="*{cantidad}" min="1" th:max="${item.existencias}" class="form-control" required/>
-                                </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-success btn-block" type="submit" name="guardar">
-                                        <i class='fas fa-save'></i> [[#{accion.guardar}]]
-                                    </button>
-                                </div>
-                            </form>
-                            <a th:href="@{/carrito/eliminar/}+${item.idProducto}" class="btn btn-danger btn-block">
-                                <i class='fas fa-trash'></i> [[#{accion.eliminar}]]
-                            </a>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card shadow-lg">
+                            <div class="card-body text-center">
+                                <figure><img th:src="@{${item.rutaImagen}}" width="260" class="img-fluid"/></figure>
+                                <form th:action="@{/carrito/guardar}" method="post" th:object="${item}" class="was-validated">
+                                    <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                                    <div class="mb-3">
+                                        <label for="cantidad" class="form-label"><i class="fas fa-box"></i> [[#{carrito.cantidad}]]:</label>
+                                        <input type="number" name="cantidad" th:field="*{cantidad}" min="1" th:max="${item.existencias}" class="form-control" required/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-success btn-block" type="submit" name="guardar">
+                                            <i class='fas fa-save'></i> [[#{accion.guardar}]]
+                                        </button>
+                                    </div>
+                                </form>
+                                <a th:href="@{/carrito/eliminar/}+${item.idProducto}" class="btn btn-danger btn-block">
+                                    <i class='fas fa-trash'></i> [[#{accion.eliminar}]]
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
     </body>

@@ -9,54 +9,39 @@
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
         <div class="container my-5">
-            <div class="row align-items-center"> 
-                <div class="col-md-3"></div>
+            <div class="row align-items-center justify-content-center">
                 <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-warning text-center">
-                            <h2><i class="fas fa-sign-in-alt"></i> [[#{login.login}]]</h2>
+                    <div class="card shadow-lg border-0 rounded-lg bg-dark text-white">
+                        <div class="card-header bg-warning text-black text-center py-4">
+                            <h2 class="mb-0"><i class="fas fa-sign-in-alt"></i> [[#{login.login}]]</h2>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body p-4">
                             <form method="POST" th:action="@{/login}">
-                                <div class="form-group row my-3">
-                                    <label class="col-md-5 col-form-label text-md-right" for="username">
-                                        <i class="fas fa-user-lock"></i> [[#{login.username}]]:
-                                    </label>
-                                    <div class="col-md-7">
-                                        <input class="form-control" type="text" name="username" id="username"/>
-                                    </div>
+                                <div class="form-group mb-3">
+                                    <label for="username" class="form-label"><i class="fas fa-user-lock"></i> [[#{login.username}]]:</label>
+                                    <input class="form-control" type="text" name="username" id="username" required/>
                                 </div>
-                                <div class="form-group row my-3">
-                                    <label class="col-md-5 col-form-label text-md-right" for="password">
-                                        <i class="fas fa-key"></i> [[#{login.password}]]:
-                                    </label>
-                                    <div class="col-md-7">
-                                        <input class="form-control" type="password" name="password" id="password"/>
-                                    </div>
+                                <div class="form-group mb-3">
+                                    <label for="password" class="form-label"><i class="fas fa-key"></i> [[#{login.password}]]:</label>
+                                    <input class="form-control" type="password" name="password" id="password" required/>
                                 </div>
-                                <div class="card-footer text-center">
-                                    <div class="card-footer text-center">
-                                        <button class="btn btn-light mx-1" type="button" style="background-color: lightgreen; color: black;">
-                                            <a th:href="@{/registro/nuevo}" class="text-black"><i class="fas fa-user-plus" style="color: black;"></i> [[#{accion.registrar}]]</a>
-                                        </button>
-                                        <button class="btn btn-light mx-1" type="button" style="background-color: lightblue; color: black;">
-                                            <a th:href="@{/registro/recordar}" class="text-black"><i class="fas fa-envelope" style="color: black;"></i> [[#{accion.recordar}]]</a>
-                                        </button>
-                                        <button class="btn btn-warning mx-1" type="submit" style="color: black;">
-                                            <i class="fas fa-sign-in-alt" style="color: black;"></i> [[#{login.login}]]
-                                        </button>
-                                    </div>
-
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-light btn-block text-dark" type="submit">
+                                        <i class="fas fa-sign-in-alt"></i> [[#{login.login}]]
+                                    </button>
+                                    <a th:href="@{/registro/nuevo}" class="btn btn-light btn-block text-dark"><i class="fas fa-user-plus"></i> [[#{accion.registrar}]]</a>
+                                    <a th:href="@{/registro/recordar}" class="btn btn-light btn-block text-dark"><i class="fas fa-envelope"></i> [[#{accion.recordar}]]</a>
+                                </div>
                             </form>
                         </div>
                     </div>
-
-                    <div th:if="${param.error != null}">
+                    <div th:if="${param.error != null}" class="alert alert-danger mt-3 text-center">
                         <h3>[[#{error.login}]]</h3>
                     </div>
                 </div>
-            </div>           
+            </div>
         </div>
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
+
 </html>
