@@ -5,31 +5,52 @@
     <head th:replace="~{layout/plantilla :: head}">
         <title>PaMonchar</title>
     </head>
-    <body >
+    <body style="background-color: #fff6ed;">
         <!-- 1 Sección tabs para las categorias-->
-        <section th:fragment="tabsCategorias" class="bg-light">
-            <div class="row p-4">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link"href="/pruebas/listado">[[#{pruebas.todas}]]</a>
-                    </li>
-                    <li class="nav-item" th:each="c : ${categorias}">
-                        <a class="nav-link" th:href="@{/pruebas/listado/} + ${c.idCategoria}">[[${c.descripcion}]]</a>
-                    </li>
-                </ul>
+        <section th:fragment="tabsCategorias">
+            <div class="card">
+                <div class="card-header p-2" style="background-color: #593f28;">
+                    <ul class="nav nav-tabs card-header-tabs" style="background-color: #593f28;">
+                        <li class="nav-item">
+                            <a class="nav-link me-2 border border-dark" style="background-color: #fff6ed;" href="/pruebas/listado">[[#{pruebas.todas}]]</a>
+                        </li>
+                        <li class="nav-item" th:each="c : ${categorias}">
+                            <a class="nav-link border-bottom border-dark" style="background-color: #fff6ed; border-width: 0 0 2px 0;" th:href="@{/pruebas/listado/} + ${c.idCategoria}">[[${c.descripcion}]]</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body p-4">
+                   
+                </div>
             </div>
         </section>
 
+        <!-- #df3f1d - color rojo -->
+        <!-- #49df1d - color verde -->
+        <!-- #201ddf - color azul -->
+        <!-- #d7df1d - color amarillo -->
+        <!-- #f8f4e8 - color crema -->
+        <!-- #feff71 - color amarillo mostaza suave -->
+        <!-- #fea500 - color naranja suave -->
+        <!-- #f7ddc2 - color cremita suave -->
+        <!-- #593f28 - color cafe -->
+        <!-- #8d4304 - color tipo  rojo/cafe -->
+        <!-- #593f28 - color tipo  otro cafe-->
+
+
+
+        <!-- #fff6ed - otra crema-->
+
         <!-- 2 Seccion para mostrar las tarjetas de los pruductos-->
-      <section th:fragment="tarjetas" class="bg-light py-4">
+        <section th:fragment="tarjetas"  style="border: none; background-color: #fff6ed ;">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                 <div class="col" th:each="p : ${productos}">
-                    <div class="card shadow-sm border-0 rounded-lg h-100">
-                        <figure class="mb-0">
+                    <div class="card shadow-sm border border-dark rounded-lg h-100" style="background-color: #593f28;">                     
+                        <figure class="mb-0" >
                             <img th:src="${p.rutaImagen}" class="card-img-top" height="200" alt="alt"/>
-                            <figcaption class="d-flex justify-content-between align-items-center p-2 bg-light">
-                                <span class="fw-bold">$[[${p.precio}]]</span>
-                                <span class="text-muted">([[${p.existencias}]])</span>
+                            <figcaption class="d-flex justify-content-between align-items-center p-2" style="border: none; background-color: #593f28;">
+                                <span class="fw-bold text-white">$[[${p.precio}]]</span>
+                                <span class="text-muted text-white">([[${p.existencias}]])</span>
                                 <form class="d-inline">
                                     <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
                                     <input type="hidden" name="existencias" th:value="${p.existencias}" />
@@ -39,10 +60,10 @@
                                 </form>
                             </figcaption>
                         </figure>
-                        <div class="card-header bg-dark text-white text-center">
+                        <div class="card-header text-dark text-center" style="border: none; background-color: #fff6ed;">
                             <h4 class="mb-0">[[${p.descripcion}]]</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-white fw-bold">
                             <p class="card-text">[[${p.detalle}]]</p>
                         </div>
                     </div>
