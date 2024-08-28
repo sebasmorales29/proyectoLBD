@@ -24,7 +24,8 @@ public class PruebasController {
     private ProductoService productoServices;
     @Autowired
     private CategoriaService categoriaServices;
-
+    
+//    ORDENAR YA
     @GetMapping("/listado")
     public String listado(Model model) {
         var productos = productoServices.getProductos(false);
@@ -43,16 +44,8 @@ public class PruebasController {
         model.addAttribute("categorias", categorias);
         return "/pruebas/listado";
     }
-
-//    @GetMapping("/listado2")
-//    public String listado2(Model model) {
-//        var productos = productoServices.getProductos(false);
-//        model.addAttribute("productos", productos);
-//        return "/pruebas/listado2";
-//
-//    }
-
-    @GetMapping("/consulta1")
+    
+        @GetMapping("/consulta1")
     public String consulta1(
             @RequestParam(value = "precioInf") double precioInf,
             @RequestParam(value = "precioSup") double precioSup,
@@ -64,6 +57,49 @@ public class PruebasController {
         return "/pruebas/listado";
 
     }
+    
+   //    MENU
+    @GetMapping("/listado2")
+    public String listado2(Model model) {
+        var productos = productoServices.getProductos(false);
+        model.addAttribute("productos", productos);
+        var categorias = categoriaServices.getCategorias(false);
+        model.addAttribute("categorias", categorias);
+        return "/pruebas/listado2";
+
+    }
+
+    @GetMapping("/listado2/{idCategoria}")
+    public String listado2(Categoria producto, Model model) {
+        var productos = categoriaServices.getCategoria(producto).getProductos();
+        model.addAttribute("productos", productos);
+        var categorias = categoriaServices.getCategorias(false);
+        model.addAttribute("categorias", categorias);
+        return "/pruebas/listado2";
+    }
+    
+        @GetMapping("/consulta2")
+    public String consulta2(
+            @RequestParam(value = "precioInf") double precioInf,
+            @RequestParam(value = "precioSup") double precioSup,
+            Model model) {
+        var productos = productoServices.consulta2(precioInf, precioSup);
+        model.addAttribute("productos", productos);
+        model.addAttribute("precioInf", precioInf);
+        model.addAttribute("precioSup", precioSup);
+        return "/pruebas/listado2";
+
+    }
+ 
+    
+
+//    @GetMapping("/listado2")
+//    public String listado2(Model model) {
+//        var productos = productoServices.getProductos(false);
+//        model.addAttribute("productos", productos);
+//        return "/pruebas/listado2";
+//
+//    }
 
 //    @GetMapping("/consulta2")
 //    public String consulta2(

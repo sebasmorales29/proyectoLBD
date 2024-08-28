@@ -14,54 +14,51 @@
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body class="bg-secondary">
-
-        <header th:fragment="header" class="header" style="background-color: #fc9e01 ;">
+        <!-- 1 Fragmento tabla de navegacion -->
+        <header class="header" style="background-color: #fc9e01; height: 110px; display: flex; justify-content: center; align-items: center;">
+            <a th:href="@{/}" class="navbar-brand fa-solid fa-burger fa-3x" style="color: #000000; margin-right: 8px"></a>
+            <a th:href="@{/}" class="navbar-brand" style="font-family:fantasy ;  font-size: 48px; ">[[#{aplicacion.titulo}]]</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" style="margin-left: 500px;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <nav class="navbar navbar-expand-sm navbar-bs-warning">
                 <div class="container">
-                    <a th:href="@{/}" class="navbar-brand fa-solid fa-burger fa-2xl" style="color: #000000; margin-right: 8px"></a>
-                    <a th:href="@{/}" class="navbar-brand" style="font-family: 'Poppins', sans-serif; font-weight: 900;">[[#{aplicacion.titulo}]]</a>
-                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
 
-
-
+                    <!-- 2 Fragmento links de navegaion-->
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 
+                        <!-- 3 UL link carrito-->
+                        <div id="resultsBlock"> 
+                        </div>
 
-
+                        <!-- 4 UL link de menu-->
                         <ul class="navbar-nav ">
-                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/pruebas/listado}">[[#{plantilla.asociaciones}]]</a></li>
-
+                            <li class="nav-item px-2" style="font-family:fantasy ;font-size: 24px; color: #000000;"><a class="nav-link" th:href="@{/pruebas/listado2}"> <i class="fas fa-utensils"></i> [[#{plantilla.menu}]]</a></li>
                         </ul>
-
-
-
+                        
+                        <!-- 4 UL link de ordenar ya-->
+                        <ul class="navbar-nav ">
+                            <li class="nav-item px-2" style="font-family:fantasy ;font-size: 24px; color: #000000;"><a class="nav-link" th:href="@{/pruebas/listado}"> <i class="fas fa-concierge-bell"></i> [[#{plantilla.ordenaya}]]</a></li>
+                        </ul>
+                        <!-- 5 UL links de categoria y productos-->
                         <ul class="navbar-nav " sec:authorize="hasRole('ROLE_VENDEDOR')">
-                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
-                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>                           
+                            <li class="nav-item px-2" style="font-family:fantasy ;font-size: 24px; color: #000000;"><a class="nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
+                            <li class="nav-item px-2" style="font-family:fantasy ;font-size: 24px; color: #000000;"><a class="nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>                           
                             <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
-
-
                             </li>
-                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>
+                            <li class="nav-item px-2" style="font-family:fantasy ;font-size: 24px; color: #000000;"><a class="nav-link" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>
                         </ul>
-
-
-
-
+                        <!-- 6 UL link de idiomas-->
                         <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" style="font-family:fantasy ;font-size: 24px; color: #000000;">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">[[#{plantilla.idioma}]]</a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
+                                <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #000000;">
                                     <li><a class="dropdown-item"  th:href="@{/(lang=es)}">ES</a></li>
                                     <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
                                 </ul>
                             </li>
                         </ul>
-                        <div id="resultsBlock"> 
-
-                        </div>
+                        <!-- 7 UL link inicio de sesion-->
                         <ul class ="navbar-nav"
                             sec:authorize="!isAuthenticated()"> 
                             <li class="nav-item my-auto text-white">
@@ -71,6 +68,7 @@
                                 </a>
                             </li>
                         </ul>
+                        <!-- 8 UL imagen usuario -->
                         <ul class ="navbar-nav"
                             sec:authorize="isAuthenticated()"> 
                             <li class="nav-item my-auto text-white">
@@ -80,6 +78,7 @@
                                      alt="alt"/>
                                 <span sec:authentication="name"> John </span>
                             </li>
+                            <!-- 9 UL link cierre de sesion-->
                             <li class="nav-item my-auto text-white"> 
                                 <form method="post"
                                       th:action="@{/logout}">
@@ -89,13 +88,11 @@
                                 </form>
                             </li>
                         </ul>
-
                     </div>
                 </div>
             </nav>
-
         </header>
-
+        <!-- 10 footer -->
         <footer th:fragment="footer" class="bg-dark text-white mt-0 p-2 text-center">
             <h2>Contáctanos</h2>
             <h4>+506 8745 2819</h4>

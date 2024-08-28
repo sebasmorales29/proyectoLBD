@@ -12,8 +12,8 @@
                 <button
                     type="submit"
                     class="btn btn-block"
-                    style="background-color: white; color: black; font-weight: bold;">
-                    <i class="fas fa-cart-plus"></i>
+                    style="font-family:fantasy ;font-size: 24px; color: #000000;">
+                    <i class="fas fa-shopping-cart"></i>
                     [[#{carrito.verCarrito}]] [[${listaTotal}]]
                 </button>
             </form>
@@ -83,7 +83,7 @@
                                 <!-- Botón de Seguir Comprando -->
                                 <div class="card text-center bg-white text-black mb-3 shadow-sm">
                                     <div class="card-body">
-                                        <a th:href="@{/}" class="btn btn-block" style="background-color: white; color: black; font-weight: bold;">
+                                        <a th:href="@{/pruebas/listado}" class="btn btn-block" style="background-color: white; color: black; font-weight: bold;">
                                             <i class='fas fa-left-long'></i> [[#{carrito.seguirComprando}]]
                                         </a>
                                     </div>
