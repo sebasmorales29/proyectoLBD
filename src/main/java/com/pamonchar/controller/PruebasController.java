@@ -44,13 +44,13 @@ public class PruebasController {
         return "/pruebas/listado";
     }
 
-    @GetMapping("/listado2")
-    public String listado2(Model model) {
-        var productos = productoServices.getProductos(false);
-        model.addAttribute("productos", productos);
-        return "/pruebas/listado2";
-
-    }
+//    @GetMapping("/listado2")
+//    public String listado2(Model model) {
+//        var productos = productoServices.getProductos(false);
+//        model.addAttribute("productos", productos);
+//        return "/pruebas/listado2";
+//
+//    }
 
     @GetMapping("/consulta1")
     public String consulta1(
@@ -61,37 +61,37 @@ public class PruebasController {
         model.addAttribute("productos", productos);
         model.addAttribute("precioInf", precioInf);
         model.addAttribute("precioSup", precioSup);
-        return "/pruebas/listado2";
+        return "/pruebas/listado";
 
     }
 
-    @GetMapping("/consulta2")
-    public String consulta2(
-            @RequestParam(value = "precioInf") double precioInf,
-            @RequestParam(value = "precioSup") double precioSup,
-            Model model) {
-        var productos = productoServices.consulta1(precioInf, precioSup);
-        model.addAttribute("productos", productos);
-        model.addAttribute("precioInf", precioInf);
-        model.addAttribute("precioSup", precioSup);
-        return "/pruebas/listado2";
-    }
-
-    @GetMapping("/consulta3")
-    public String consulta3(
-            @RequestParam(value = "precioInf") double precioInf,
-            @RequestParam(value = "precioSup") double precioSup,
-            Model model) {
-        var productos = productoServices.consulta1(precioInf, precioSup);
-        model.addAttribute("productos", productos);
-        model.addAttribute("precioInf", precioInf);
-        model.addAttribute("precioSup", precioSup);
-        return "/pruebas/listado2";
-    }
-        @GetMapping("/consulta4")
-    public String consulta4(Model model) {
-        var productoActivos = productoServices.getProductos(true);
-        model.addAttribute("productos", productoActivos);
-        return "/pruebas/listado2";
-}
+//    @GetMapping("/consulta2")
+//    public String consulta2(
+//            @RequestParam(value = "precioInf") double precioInf,
+//            @RequestParam(value = "precioSup") double precioSup,
+//            Model model) {
+//        var productos = productoServices.consulta1(precioInf, precioSup);
+//        model.addAttribute("productos", productos);
+//        model.addAttribute("precioInf", precioInf);
+//        model.addAttribute("precioSup", precioSup);
+//        return "/pruebas/listado2";
+//    }
+//
+//    @GetMapping("/consulta3")
+//    public String consulta3(
+//            @RequestParam(value = "precioInf") double precioInf,
+//            @RequestParam(value = "precioSup") double precioSup,
+//            Model model) {
+//        var productos = productoServices.consulta1(precioInf, precioSup);
+//        model.addAttribute("productos", productos);
+//        model.addAttribute("precioInf", precioInf);
+//        model.addAttribute("precioSup", precioSup);
+//        return "/pruebas/listado2";
+//    }
+//        @GetMapping("/consulta4")
+//    public String consulta4(Model model) {
+//        var productoActivos = productoServices.getProductos(true);
+//        model.addAttribute("productos", productoActivos);
+//        return "/pruebas/listado2";
+//}
 }

@@ -5,69 +5,55 @@
     <head th:replace="~{layout/plantilla :: head}">
         <title>PaMonchar</title>
     </head>
-    <body style="background-color: #df3f1d  ;">
+    <body >
+
         <!-- 1 Sección tabs para las categorias-->
-        <section th:fragment="tabsCategorias" style="background-color: #FFDAB9  ;">
-            <div class="card-body p-2">
-                <div class="card">
-                    <div class="card-header p-2" style="background-color: #593f28;">
-                        <ul class="nav nav-tabs card-header-tabs" style="background-color: #593f28;">
+        <section th:fragment="tabsCategorias" style="background-color: #f8f4e8;">
+            <div class="container py-4">
+                <div class="card custom" style="background-color: #f8f4e8;">
+                    <div class="card-header p-2 custom-card-header" style="padding: 0; background-color: #593f28;">
+                        <ul class="nav nav-tabs card-header-tabs" style="display: flex; justify-content: space-between; padding: 0; margin: 0;">
                             <li class="nav-item">
-                                <a class="nav-link me-2 border border-dark" style="background-color: #fff6ed;" href="/pruebas/listado">[[#{pruebas.todas}]]</a>
+                                <a class="nav-link me-2" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold;" href="/pruebas/listado">[[#{pruebas.todas}]]</a>
                             </li>
                             <li class="nav-item" th:each="c : ${categorias}">
-                                <a class="nav-link border-bottom border-dark" style="background-color: #fff6ed; border-width: 0 0 2px 0;" th:href="@{/pruebas/listado/} + ${c.idCategoria}">[[${c.descripcion}]]</a>
+                                <a class="nav-link" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold;" th:href="@{/pruebas/listado/} + ${c.idCategoria}">[[${c.descripcion}]]</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="card-body p-0">
 
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- #df3f1d - color rojo -->
-        <!-- #49df1d - color verde -->
-        <!-- #201ddf - color azul -->
-        <!-- #d7df1d - color amarillo -->
-        <!-- #f8f4e8 - color crema -->
-        <!-- #feff71 - color amarillo mostaza suave -->
-        <!-- #fea500 - color naranja suave -->
-        <!-- #f7ddc2 - color cremita suave -->
-        <!-- #593f28 - color cafe -->
-        <!-- #8d4304 - color tipo  rojo/cafe -->
-        <!-- #593f28 - color tipo  otro cafe-->
 
-
-        <!-- #fff6ed - otra crema (elementos)-->
-        <!-- #FFDAB9 - otra crema fuerte (fondo)-->
-        <!-- #8B5E3C - cafe prueba-->
 
         <!-- 2 Seccion para mostrar las tarjetas de los pruductos-->
-        <section th:fragment="tarjetas"  style="border: none; background-color: #e4e4e6 ;">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                <div class="col" th:each="p : ${productos}">
-                    <div class="card shadow-sm border border-dark rounded-lg h-100" style="background-color: #8B5E3C ;">                     
-                        <figure class="mb-0" >
-                            <img th:src="${p.rutaImagen}" class="card-img-top" height="200" alt="alt"/>
-                            <figcaption class="d-flex justify-content-between align-items-center p-2" style="border: none; background-color: #fff6ed;">
-                                <span class="fw-bold text-dark">$[[${p.precio}]]</span>
-                                <span class="text-muted text-dark">([[${p.existencias}]])</span>
-                                <form class="d-inline">
-                                    <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
-                                    <input type="hidden" name="existencias" th:value="${p.existencias}" />
-                                    <button class="btn btn-light border" type="button" onclick="addCart(this.form)">
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                </form>
-                            </figcaption>
-                        </figure>
-                        <div class="card-header text-dark text-center" style="border: none; background-color: #fff6ed;">
-                            <h4 class="mb-0">[[${p.descripcion}]]</h4>
-                        </div>
-                        <div class="card-body text-dark fw-bold">
-                            <p class="card-text">[[${p.detalle}]]</p>
+        <section th:fragment="tarjetas" style="border: none; background-color: #f8f4e8;">
+            <div class="container py-4"> 
+                <div class="row row-cols-1 row-cols-md-2 g-4"> 
+                    <div class="col" th:each="p : ${productos}">
+                        <div class="card h-100 shadow-sm border-2 rounded-lg" style="background-color: #593f28;">
+                            <figure class="m-0">
+                                <img th:src="${p.rutaImagen}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="alt"/>
+                                <figcaption class="d-flex justify-content-between align-items-center p-2" style="border: none; background-color: #593f28;">
+                                    <span class="fw-bold text-white">$[[${p.precio}]]</span>
+                                    <span class="text-white fw-bold">([[${p.existencias}]])</span>
+                                    <form class="d-inline">
+                                        <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
+                                        <input type="hidden" name="existencias" th:value="${p.existencias}" />
+                                        <button class="btn btn-light border" type="button" onclick="addCart(this.form)">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </button>
+                                    </form>
+                                </figcaption>
+                            </figure>
+                            <div class="card-header text-dark text-center" style="border: none; background-color: #f8f4e8;">
+                                <h4 class="mb-0">[[${p.descripcion}]]</h4>
+                            </div>
+                            <div class="card-body text-white fw-bold">
+                                <p class="card-text">[[${p.detalle}]]</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -77,28 +63,30 @@
 
         <!--  Seccion para mostrar las tarjetas de los productos EN EL INDEX -->
         <section th:fragment="tarjetasIndex" style="border: none; background-color: #e4e4e6;">
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col" th:each="p : ${productos}">
-                    <div class="card h-100 shadow-sm border-0 rounded-lg" style="background-color: #8B5E3C;">
-                        <figure class="m-0">
-                            <img th:src="${p.rutaImagen}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="alt"/>
-                            <figcaption class="d-flex justify-content-between align-items-center p-2" style="border: none; background-color: #fff6ed;">
-                                <span class="fw-bold text-dark">$[[${p.precio}]]</span>
-                                <span class="text-muted text-dark">([[${p.existencias}]])</span>
-                                <form class="d-inline">
-                                    <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
-                                    <input type="hidden" name="existencias" th:value="${p.existencias}" />
-                                    <button class="btn btn-light border" type="button" onclick="addCart(this.form)">
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                </form>
-                            </figcaption>
-                        </figure>
-                        <div class="card-header text-dark text-center" style="border: none; background-color: #fff6ed;">
-                            <h4 class="mb-0">[[${p.descripcion}]]</h4>
-                        </div>
-                        <div class="card-body text-dark fw-bold">
-                            <p class="card-text">[[${p.detalle}]]</p>
+            <div class="container py-4"> 
+                <div class="row row-cols-1 row-cols-md-2 g-4"> 
+                    <div class="col" th:each="p : ${productos}">
+                        <div class="card h-100 shadow-sm border-0 rounded-lg" style="background-color: #8B5E3C;">
+                            <figure class="m-0">
+                                <img th:src="${p.rutaImagen}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="alt"/>
+                                <figcaption class="d-flex justify-content-between align-items-center p-2" style="border: none; background-color: #fff6ed;">
+                                    <span class="fw-bold text-dark">$[[${p.precio}]]</span>
+                                    <span class="text-muted text-dark">([[${p.existencias}]])</span>
+                                    <form class="d-inline">
+                                        <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
+                                        <input type="hidden" name="existencias" th:value="${p.existencias}" />
+                                        <button class="btn btn-light border" type="button" onclick="addCart(this.form)">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </button>
+                                    </form>
+                                </figcaption>
+                            </figure>
+                            <div class="card-header text-dark text-center" style="border: none; background-color: #fff6ed;">
+                                <h4 class="mb-0">[[${p.descripcion}]]</h4>
+                            </div>
+                            <div class="card-body text-dark fw-bold">
+                                <p class="card-text">[[${p.detalle}]]</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,161 +133,91 @@
 
 
 
+        <!-- #df3f1d - color rojo -->
+        <!-- #49df1d - color verde -->
+        <!-- #201ddf - color azul -->
+        <!-- #d7df1d - color amarillo -->
+        <!-- #f8f4e8 - color crema -->
+        <!-- #feff71 - color amarillo mostaza suave -->
+        <!-- #fea500 - color naranja suave -->
+        <!-- #f7ddc2 - color cremita suave -->
+        <!-- #593f28 - color cafe -->
+        <!-- #8d4304 - color tipo  rojo/cafe -->
+        <!-- #593f28 - color tipo  otro cafe-->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <!-- #fff6ed - otra crema (elementos)-->
+        <!-- #FFDAB9 - otra crema fuerte (fondo)-->
+        <!-- #8B5E3C - cafe prueba-->
 
 
 
         <!-- 4 Sección  para crear las consultas especiales-->
-        <section th:fragment="consultas" class="bg-light">
-            <div class="row p-4">
-                <div class="row row-cols-3 m-2">
-                    <div class="card p-2">
-                        <form method="get"
-                              th:action="@{/pruebas/consulta1}">
-                            <div
-                                class= "card-header bg-primary text-center text white" >
-                                <h4>[[#{pruebas.ampliadas}]]</h4>
+        <section th:fragment="consultas" style="background-color: #f8f4e8; padding-top: 0; padding-bottom: 0;">
+            <div class="container" style="max-width: 600px; margin: 20px auto;"> <!-- Añadido max-width y margenes automáticos para centrar -->
+                <div class="card custom mx-auto" style="background-color: #593f28; border: none; box-shadow: none;">
+                    <form method="get" th:action="@{/pruebas/consulta1}">
+                        <div class="card-header text-center" style="background-color: #593f28; color: white; padding: 10px;">
+                            <h4 style="margin: 0; font-size: 1.25rem;">[[#{pruebas.ampliadas}]]</h4>
+                        </div>
 
-                                <div class= "card-header bg-warning" >
-                                    <div class="mb-3">
-                                        <label for="precioInf">[[#{pruebas.precio.inferior}]] </label>
-                                        <input type= "number" 
-                                               class="form-control"
-                                               th:value="${precioInf}"
-                                               th:name="precioInf" required="true">
-                                    </div>
-                                </div>
-                                <div class= "card-header bg-warning" >
-                                    <div class="mb-3">
-                                        <label for="precioSup">[[#{pruebas.precio.superior}]] </label>
-                                        <input type= "number" 
-                                               class="form-control"
-                                               th:value="${precioSup}"
-                                               th:name="precioSup" required="true"/>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-Secondary text-center">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        [[#{pruebas.ampliadas}]]
-                                    </button>
-                                </div>
+                        <div class="card-body d-flex justify-content-around" style="background-color: #593f28; padding: 10px;">
+                            <div class="form-group mb-0" style="width: 45%;">
+                                <label for="precioInf" style="color: white;">[[#{pruebas.precio.inferior}]]</label>
+                                <input type="number" class="form-control" th:value="${precioInf}" th:name="precioInf" required="true">
                             </div>
-                        </form>
-                    </div>
-
-                    <!--Consulta2-->
-                    <div class="card p-2">
-                        <form method="get"
-                              th:action="@{/pruebas/consulta2}">
-                            <div
-                                class= "card-header bg-primary text-center text white" >
-                                <h4>[[#{pruebas.jpql}]]</h4>
-
-                                <div class= "card-header bg-warning" >
-                                    <div class="mb-3">
-                                        <label for="precioInf">[[#{pruebas.precio.inferior}]] </label>
-                                        <input type= "number" 
-                                               class="form-control"
-                                               th:value="${precioInf}"
-                                               th:name="precioInf" required="true">
-                                    </div>
-                                </div>
-                                <div class= "card-header bg-warning" >
-                                    <div class="mb-3">
-                                        <label for="precioSup">[[#{pruebas.precio.superior}]] </label>
-                                        <input type= "number" 
-                                               class="form-control"
-                                               th:value="${precioSup}"
-                                               th:name="precioSup" required="true"/>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-Secondary text-center">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        [[#{pruebas.jpql}]]
-                                    </button>
-                                </div>
+                            <div class="form-group mb-0" style="width: 45%;">
+                                <label for="precioSup" style="color: white;">[[#{pruebas.precio.superior}]]</label>
+                                <input type="number" class="form-control" th:value="${precioSup}" th:name="precioSup" required="true">
                             </div>
-                        </form>
-                    </div>
+                        </div>
 
-                    <!--Consulta3-->
-                    <div class="card p-2">
-                        <form method="get"
-                              th:action="@{/pruebas/consulta3}">
-                            <div
-                                class= "card-header bg-primary text-center text white" >
-                                <h4>[[#{pruebas.nativo}]]</h4>
-
-                                <div class= "card-header bg-warning" >
-                                    <div class="mb-3">
-                                        <label for="precioInf">[[#{pruebas.precio.inferior}]] </label>
-                                        <input type= "number" 
-                                               class="form-control"
-                                               th:value="${precioInf}"
-                                               th:name="precioInf" required="true">
-                                    </div>
-                                </div>
-                                <div class= "card-header bg-warning" >
-                                    <div class="mb-3">
-                                        <label for="precioSup">[[#{pruebas.precio.superior}]] </label>
-                                        <input type= "number" 
-                                               class="form-control"
-                                               th:value="${precioSup}"
-                                               th:name="precioSup" required="true"/>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-Secondary text-center">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        [[#{pruebas.nativo}]]
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!--Consulta4-->
-                    <div class="card p-2">
-                        <form method="get"
-                              th:action="@{/pruebas/consulta4}">
-                            <div
-                                class= "card-header bg-primary text-center text white" >
-                                <h4 style="text-align: center">[[#{pruebas.tarea}]]</h4>
-                                <div class= "card-header bg-warning" >
-                                    <div class="mb-3">
-                                        <label>[[#{pruebas.tarea.activos}]]</label>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-Secondary text-center">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        [[#{pruebas.tarea}]]
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
+                        <div class="card-footer text-center" style="background-color: #593f28;">
+                            <button type="submit" class="btn btn-light" style="background-color: #f8f4e8; color: #593f28; font-weight: bold;">
+                                <i class="fa-solid fa-magnifying-glass"></i> [[#{pruebas.ampliadas}]]
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
+
+        <!--  FRAGMENTO PARA MAPA   -->
+
+        <section th:fragment="mapa" style="background-color: #f8f4e8;">
+            <div class="card-body p-4">
+                <h2 style="display: flex; justify-content: center;">Ubícanos</h2>
+                <article>
+                    <h3 style="display: flex; justify-content: center;">Compartí con nosotros</h3>
+                    <div style="display: flex; justify-content: center;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d7850.3662347914915!2d-84.406248188895!3d10.327225889752958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDE5JzM4LjAiTiA4NMKwMjQnMTMuMiJX!5e0!3m2!1ses-419!2scr!4v1724811158038!5m2!1ses-419!2scr"
+                                width="1100"
+                                height="400"
+                                style="border: none;">
+                        </iframe>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!--  FRAGMENTO PARA ACERDA DE NOSOTROS    -->
+        <section th:fragment="acercaD" style="background-color: #f8f4e8; padding: 2rem;">
+            <div class="container">
+                <h2>Acerca de Nosotros</h2>
+                <p>
+                    En nuestra empresa, nos dedicamos a proporcionar soluciones innovadoras para el sector. 
+                    Nuestro equipo está formado por expertos en diversas áreas que trabajan juntos para ofrecer 
+                    los mejores productos y servicios. Con años de experiencia y un compromiso inquebrantable con 
+                    la calidad, estamos aquí para ayudarte a alcanzar tus objetivos.
+                </p>
+                <p>
+                    Nuestro enfoque se basa en la excelencia y la atención al cliente, asegurando que cada 
+                    interacción sea memorable y que cada proyecto se lleve a cabo con el máximo profesionalismo.
+                </p>
+            </div>
+        </section>
+
+
+
     </body>
 </html>
