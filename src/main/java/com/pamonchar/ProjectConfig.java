@@ -52,13 +52,13 @@ public class ProjectConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registro) {
         registro.addInterceptor(localeChangeInterceptor());
     }
-    
+
     @Bean("messageSource")
-    public MessageSource messageSource(){
-    ResourceBundleMessageSource messageSource =
-        new ResourceBundleMessageSource();
-    messageSource.setBasename("messages");
-    messageSource.setDefaultEncoding("UTF-8");
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource
+                = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
 
@@ -80,20 +80,31 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/registro/**", "/js/**", "/webjars/**")
                 .permitAll()
                 .requestMatchers(
+                        /* producto */
                         "/producto/nuevo", "/producto/guardar",
                         "/producto/modificar/**", "/producto/eliminar/**",
+                        /* carrusel */
+                        "/carrusel/nuevo", "/carrusel/guardar",
+                        "/carrusel/modificar/**", "/carrusel/eliminar/**",
+                        /* card */
+                        "/card/nuevo", "/card/guardar",
+                        "/card/modificar/**", "/card/eliminar/**",
+                        /* categoria */
                         "/categoria/nuevo", "/categoria/guardar",
                         "/categoria/modificar/**", "/categoria/eliminar/**",
+                        /* usuario */
                         "/usuario/nuevo", "/usuario/guardar",
                         "/usuario/modificar/**", "/usuario/eliminar/**",
                         "/reportes/**"
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/producto/listado",
+                        "/carrusel/listado",
+                        "/card/listado",
                         "/categoria/listado",
                         "/usuario/listado"
                 ).hasAnyRole("ADMIN", "VENDEDOR")
-                .requestMatchers("/facturar/carrito","/categoria/listado")
+                .requestMatchers("/facturar/carrito")
                 .hasRole("USER")
                 )
                 .formLogin((form) -> form

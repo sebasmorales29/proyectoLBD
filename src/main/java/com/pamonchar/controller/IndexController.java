@@ -1,6 +1,7 @@
 package com.pamonchar.controller;
 
-import com.pamonchar.services.ProductoService;
+import com.pamonchar.services.CardService;
+import com.pamonchar.services.CarruselService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
     @Autowired
-    private ProductoService productoServices;
-    
+    private CarruselService carruselServices;
+    @Autowired
+      private CardService cardServices;
 
+    
     @GetMapping("/")
     public String listado(Model model) {
-
-        var productos = productoServices.getProductos(false);
-        model.addAttribute("productos", productos);
-       
+        var carrusell = carruselServices.getCarrusell(false);
+        model.addAttribute("carrusell", carrusell);
+        var cards = cardServices.getCards(false);
+        model.addAttribute("cards", cards);
         return "index";
     }
 }
