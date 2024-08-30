@@ -87,7 +87,7 @@
             </div>
         </section>
         <!--MENU-->
-        
+
         <!-- 1 Sección tabs para las categorias MENU-->
         <section th:fragment="tabsCategoriasM" style="background-color: #f8f4e8;">
             <div class="container py-4">
@@ -162,12 +162,12 @@
                 </div>
             </div>
         </section>
-        
+
         <!--INDEX-->
         <!-- 1 Seccion para mostrar las tarjetas de los pruductos en carrusel-->
-        <section th:fragment="carrusel" style="background-color: #f8f4e8;">
+        <section th:fragment="carrusel" style="background-color: #f8f4e8 ;">
             <div class="card-body p-4">
-                <div class="container">
+                <div class="container" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold; padding: 2rem;">
                     <div id="ofertasCarousel" class="carousel slide" data-bs-ride="carousel" style="background-color: #f8f9fa;">
                         <div class="carousel-inner">
                             <div th:each="r, iterStat : ${carrusell}">
@@ -199,7 +199,7 @@
         </section>
 
         <!-- 2 Seccion para mostrar las tarjetas de los productos EN EL INDEX -->
-        <section th:fragment="tarjetasIndex" style="border: none; background-color: #e4e4e6;">
+        <section th:fragment="tarjetasIndex" style="border: none; background-color: #f8f4e8;">
             <div class="container py-4"> 
                 <div class="row row-cols-1 row-cols-md-2 g-4"> 
                     <div class="col" th:each="d : ${cards}">
@@ -220,8 +220,8 @@
         </section>
 
         <!--  3  FRAGMENTO PARA MAPA   -->
-        <section th:fragment="mapa" style="background-color: #f8f4e8;">
-            <div class="card-body p-4">
+        <section th:fragment="mapa" style="background-color: #f8f4e8; margin-bottom: 50px">
+            <div class="container" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold; padding: 2rem;">
                 <h2 style="display: flex; justify-content: center;">Ubícanos</h2>
                 <article>
                     <h3 style="display: flex; justify-content: center;">Compartí con nosotros</h3>
@@ -237,8 +237,8 @@
         </section>
 
         <!--  4 FRAGMENTO PARA ACERDA DE NOSOTROS    -->
-        <section th:fragment="acercaD" style="background-color: #f8f4e8; padding: 2rem;">
-            <div class="container">
+        <section th:fragment="acercaD" style="background-color: #f8f4e8;">
+            <div class="container" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold; padding: 2rem;">
                 <h2>Acerca de Nosotros</h2>
                 <p>
                     En nuestra empresa, nos dedicamos a proporcionar soluciones innovadoras para el sector. 
@@ -258,18 +258,14 @@
 <!-- #df3f1d - color rojo -->
 <!-- #49df1d - color verde -->
 <!-- #201ddf - color azul -->
-<!-- #d7df1d - color amarillo -->
-<!-- #f8f4e8 - color crema -->
-<!-- #feff71 - color amarillo mostaza suave -->
-<!-- #fea500 - color naranja suave -->
-<!-- #f7ddc2 - color cremita suave -->
+
+
+<!-- #fc9e01 - color amarillo -->
+<!-- #f8f4e8 - color crema (Fondo) -->
 <!-- #593f28 - color cafe -->
-<!-- #8d4304 - color tipo  rojo/cafe -->
-<!-- #593f28 - color tipo  otro cafe-->
 
 
-<!-- #fff6ed - otra crema (elementos)-->
-<!-- #FFDAB9 - otra crema fuerte (fondo)-->
-<!-- #8B5E3C - cafe prueba-->
+
+
 
 

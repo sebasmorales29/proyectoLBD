@@ -14,7 +14,7 @@
     <name>PamoncharP</name>
     <description>Proyecto Restaurante de Web y Patrones 2C 2024 Viernes Intermedio</description>
     <properties>
-        <java.version>20</java.version>
+        <java.version>22</java.version>
     </properties>
     <dependencies>
         <dependency>
