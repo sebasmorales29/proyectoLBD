@@ -12,8 +12,11 @@
                 <button
                     type="submit"
                     class="btn btn-block"
-                    style="font-family:fantasy ;font-size: 24px; color: #000000;">
-                    <i class="fas fa-shopping-cart"></i>
+                    style="font-family:fantasy ;font-size: 24px; color: #000000;
+                    color: #000000;"
+                    onmouseover="this.style.color = '#ffffff ';" 
+                    onmouseout="this.style.color = '#000000';">
+                    <i class="fas fa-shopping-cart" ></i>
                     [[#{carrito.verCarrito}]] [[${listaTotal}]]
                 </button>
             </form>
@@ -25,36 +28,36 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-9">
-                        <div class="card shadow-lg">
-                            <div class="card-header text-white text-center" style="background-color:#161616;">
+                        <div class="card shadow-lg" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold; ">
+                            <div class="card-header text-white text-center" style="background-color:#593f28;">
                                 <h4><i class="fas fa-shopping-cart"></i> [[#{carrito.titulo}]]</h4>
                             </div>
                             <div th:if="${items != null and !items.empty}">
                                 <table class="table table-bordered table-hover">
                                     <thead class="bg-dark text-white">
                                         <tr>
-                                            <th>#</th>
-                                            <th>[[#{producto.descripcion}]]</th>
-                                            <th>[[#{producto.precio}]]</th>
-                                            <th>[[#{carrito.cantidad}]]</th>
-                                            <th>[[#{carrito.total}]]</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th style="background-color: #f8f4e8;">#</th>
+                                            <th style="background-color: #f8f4e8;">[[#{producto.descripcion}]]</th>
+                                            <th style="background-color: #f8f4e8;">[[#{producto.precio}]]</th>
+                                            <th style="background-color: #f8f4e8;">[[#{carrito.cantidad}]]</th>
+                                            <th style="background-color: #f8f4e8;">[[#{carrito.total}]]</th>
+                                            <th style="background-color: #f8f4e8;"></th>
+                                            <th style="background-color: #f8f4e8;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="item, contador : ${items}">
-                                            <td>[[${contador.count}]]</td>
-                                            <td>[[${item.descripcion}]]</td>
-                                            <td class="text-end">[[${item.precio}]]</td>
-                                            <td class="text-center">[[${item.cantidad}]]</td>
-                                            <td class="text-end">[[${item.cantidad * item.precio}]]</td>
-                                            <td>
+                                            <td style="background-color: #f8f4e8;">[[${contador.count}]]</td>
+                                            <td style="background-color: #f8f4e8;">[[${item.descripcion}]]</td>
+                                            <td class="text-end" style="background-color: #f8f4e8;">[[${item.precio}]]</td>
+                                            <td class="text-center" style="background-color: #f8f4e8;">[[${item.cantidad}]]</td>
+                                            <td class="text-end" style="background-color: #f8f4e8;">[[${item.cantidad * item.precio}]]</td>
+                                            <td style="background-color: #f8f4e8;">
                                                 <a th:href="@{/carrito/eliminar/}+${item.idProducto}" class="btn btn-danger btn-sm">
                                                     <i class='fas fa-trash'></i> [[#{accion.eliminar}]]
                                                 </a>
-                                            </td>
-                                            <td>
+                                            </td >
+                                            <td style="background-color: #f8f4e8;">
                                                 <a th:href="@{/carrito/modificar/}+${item.idProducto}" class="btn btn-success btn-sm">
                                                     <i class='fas fa-sync'></i> [[#{accion.actualizar}]]
                                                 </a>
@@ -75,23 +78,23 @@
                             <div class="col-md-3">
                                 <!-- Cuadro de Total Compra -->
                                 <div class="card text-center bg-white text-black mb-3 shadow-sm">
-                                    <div class="card-body">
+                                    <div class="card-body" style="background-color: #f8f4e8; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000;">
                                         <h3>[[#{carrito.totalCompra}]]</h3>
                                         <h4 class="fs-4"><i class="fas fa-shopping-cart" style="color: black;"></i> [[${carritoTotal}]]</h4>
                                     </div>
                                 </div>
                                 <!-- Botón de Seguir Comprando -->
                                 <div class="card text-center bg-white text-black mb-3 shadow-sm">
-                                    <div class="card-body">
-                                        <a th:href="@{/pruebas/listado}" class="btn btn-block" style="background-color: white; color: black; font-weight: bold;">
+                                    <div class="card-body" style="background-color: #f8f4e8; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000;">
+                                        <a th:href="@{/pruebas/listado}" class="btn btn-block" style="background-color: #f8f4e8; color: black; font-weight: bold;">
                                             <i class='fas fa-left-long'></i> [[#{carrito.seguirComprando}]]
                                         </a>
                                     </div>
                                 </div>
                                 <!-- Botón de Facturar -->
                                 <div class="card text-center bg-white text-black mb-3 shadow-sm">
-                                    <div class="card-body">
-                                        <a th:href="@{/facturar/carrito}" class="btn btn-block" style="background-color: white; color: black; font-weight: bold;">
+                                    <div class="card-body" style="background-color: #f8f4e8; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000;">
+                                        <a th:href="@{/facturar/carrito}" class="btn btn-block" style="background-color: #f8f4e8; color: black; font-weight: bold;">
                                             <i class='fas fa-receipt'></i> [[#{carrito.facturar}]]
                                         </a>
                                     </div>

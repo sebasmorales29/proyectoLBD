@@ -52,28 +52,28 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-9">
-                        <div class="card shadow-lg">
-                            <div class="card-header" style="background-color: #593f28; color: white;">
+                        <div class="card shadow-lg" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold; ">
+                            <div class="card-header text-white text-center" style="background-color:#593f28;">
                                 <h4><i class="fas fa-list"></i> [[#{carrusel.listado}]]</h4>
                             </div>
                             <div th:if="${carrusell != null and !carrusell.empty}">
                                 <table class="table table-bordered table-hover">
-                                    <thead style="background-color: #593f28; color: white;">
+                                    <thead class="bg-dark text-white">
                                         <tr>
-                                            <th>#</th>
-                                            <th>[[#{carrusel.nombre}]]</th>
-                                            <th>[[#{carrusel.descripcion}]]</th>
-                                            <th>[[#{carrusel.activo}]]</th>
-                                            <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                                            <th style="background-color: #f8f4e8;">#</th>
+                                            <th style="background-color: #f8f4e8;">[[#{carrusel.nombre}]]</th>
+                                            <th style="background-color: #f8f4e8;">[[#{carrusel.descripcion}]]</th>
+                                            <th style="background-color: #f8f4e8;">[[#{carrusel.activo}]]</th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')" style="background-color: #f8f4e8;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="carrusel : ${carrusell}">
-                                            <td>[[${carrusel.idCarrusel}]]</td>
-                                            <td>[[${carrusel.nombre}]]</td>
-                                            <td>[[${carrusel.descripcion}]]</td>
-                                            <td th:text="${carrusel.activo} ? 'Activa' : 'Inactiva'"></td>
-                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <td style="background-color: #f8f4e8;">[[${carrusel.idCarrusel}]]</td>
+                                            <td style="background-color: #f8f4e8;">[[${carrusel.nombre}]]</td>
+                                            <td style="background-color: #f8f4e8;">[[${carrusel.descripcion}]]</td>
+                                            <td th:text="${carrusel.activo} ? 'Activa' : 'Inactiva'" style="background-color: #f8f4e8;"></td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')" style="background-color: #f8f4e8;">
                                                 <a th:href="@{/carrusel/eliminar/}+${carrusel.idCarrusel}" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                                                 </a>
@@ -140,10 +140,10 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="card shadow-lg">
-                                            <div class="card-header" style="background-color: #593f28; color: white;">
+                                            <div class="card-header text-white text-center" style="background-color:#593f28;" >
                                                 <h4><i class="fas fa-edit"></i> [[#{accion.actualizar}]]</h4>
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body" style="background-color: #f8f4e8;">
                                                 <div class="mb-3">
                                                     <label for="nombre" class="form-label"><i class="fa fa-tag"></i> [[#{carrusel.nombre}]]</label>
                                                     <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true">
@@ -159,7 +159,7 @@
                                                 <div class="mb-3">
                                                     <label for="imagen" class="form-label"><i class="fas fa-image"></i> [[#{carrusel.imagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${carrusel.rutaImagen}}" alt="your image" class="img-fluid mt-2"/>
+                                                    <img id="blah" th:src="@{${carrusel.rutaImagen}}" alt="your image" class="img-fluid d-block mx-auto mt-4"/>
                                                 </div>
                                             </div>
                                         </div>

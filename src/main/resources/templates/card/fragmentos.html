@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-9">
-                        <div class="card shadow-lg">
+                        <div class="card shadow-lg" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold; ">
                             <div class="card-header text-white text-center" style="background-color:#593f28;">
                                 <h4><i class="fas fa-list"></i> [[#{card.listado}]]</h4>
                             </div>
@@ -64,7 +64,7 @@
                                             <th style="background-color: #f8f4e8;">[[#{card.nombre}]]</th>
                                             <th style="background-color: #f8f4e8;">[[#{card.descripcion}]]</th>
                                             <th style="background-color: #f8f4e8;">[[#{card.activo}]]</th>
-                                            <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')" style="background-color: #f8f4e8;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,8 +72,8 @@
                                             <td style="background-color: #f8f4e8;">[[${card.idCard}]]</td>
                                             <td style="background-color: #f8f4e8;">[[${card.nombre}]]</td>
                                             <td style="background-color: #f8f4e8;">[[${card.descripcion}]]</td>
-                                            <td th:text="${card.activo} ? 'Activa' : 'Inactiva'"></td>
-                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <td th:text="${card.activo} ? 'Activa' : 'Inactiva'" style="background-color: #f8f4e8;"></td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')" style="background-color: #f8f4e8;">
                                                 <a th:href="@{/card/eliminar/}+${card.idCard}" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                                                 </a>
@@ -140,10 +140,10 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="card shadow-lg">
-                                            <div class="card-header" style="background-color: #161616; color: white;">
+                                            <div class="card-header text-white text-center" style="background-color:#593f28;" >
                                                 <h4><i class="fas fa-edit"></i> [[#{accion.actualizar}]]</h4>
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body" style="background-color: #f8f4e8;">
                                                 <div class="mb-3">
                                                     <label for="nombre" class="form-label"><i class="fa fa-tag"></i> [[#{card.nombre}]]</label>
                                                     <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true">
@@ -159,7 +159,7 @@
                                                 <div class="mb-3">
                                                     <label for="imagen" class="form-label"><i class="fas fa-image"></i> [[#{card.imagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${card.rutaImagen}}" alt="your image" class="img-fluid mt-2"/>
+                                                    <img id="blah" th:src="@{${card.rutaImagen}}" alt="your image" class="img-fluid d-block mx-auto mt-4"/>
                                                 </div>
                                             </div>
                                         </div>
