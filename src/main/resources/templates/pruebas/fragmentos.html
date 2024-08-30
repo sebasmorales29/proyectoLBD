@@ -28,7 +28,7 @@
         <!-- 2 Seccion para mostrar las tarjetas de los pruductos ORDENAR YA -->
         <section th:fragment="tarjetas" style="border: none; background-color: #f8f4e8;">
             <div class="container py-4"> 
-                <div class="row row-cols-1 row-cols-md-2 g-4"> 
+                <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
                     <div class="col" th:each="p : ${productos}">
                         <div class="card h-100 shadow-sm border-2 rounded-lg" style="background-color: #593f28;">
                             <figure class="m-0">
@@ -39,8 +39,8 @@
                                     <form class="d-inline">
                                         <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
                                         <input type="hidden" name="existencias" th:value="${p.existencias}" />
-                                        <button class="btn btn-light border" type="button" onclick="addCart(this.form)">
-                                            <i class="fas fa-cart-plus"></i>
+                                        <button class="btn" type="button" style="background-color: #593f28" onclick="addCart(this.form)">
+                                            <i class="fa-solid fa-basket-shopping fa-xl" style="color: #fdba14"></i>
                                         </button>
                                     </form>
                                 </figcaption>
@@ -78,8 +78,8 @@
                         </div>
 
                         <div class="card-footer text-center" style="background-color: #593f28;">
-                            <button type="submit" class="btn btn-light" style="background-color: #f8f4e8; color: #593f28; font-weight: bold;">
-                                <i class="fa-solid fa-magnifying-glass"></i> [[#{pruebas.ampliadas}]]
+                            <button type="submit" class="btn btn-light" style="background-color: #f8f4e8; color: #00000; font-weight: bold;">
+                                <i class="fa-solid fa-magnifying-glass"></i> [[#{pruebas.mensaje}]]
                             </button>
                         </div>
                     </form>
@@ -109,7 +109,7 @@
         <!-- 2 Seccion para mostrar las tarjetas de los pruductos MENU -->
         <section th:fragment="tarjetasM" style="border: none; background-color: #f8f4e8;">
             <div class="container py-4"> 
-                <div class="row row-cols-1 row-cols-md-2 g-4"> 
+                <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
                     <div class="col" th:each="p : ${productos}">
                         <div class="card h-100 shadow-sm border-2 rounded-lg" style="background-color: #593f28;">
                             <figure class="m-0">
@@ -135,7 +135,7 @@
 
         <!-- 3 Sección  para crear las consultas especiales MENU-->
         <section th:fragment="consultasM" style="background-color: #f8f4e8; padding-top: 0; padding-bottom: 0;">
-            <div class="container" style="max-width: 600px; margin: 20px auto; background-color: #f8f4e8;"> <!-- Añadido max-width y margenes automáticos para centrar -->
+            <div class="container" style="max-width: 600px; margin: 20px auto; background-color: #f8f4e8;"> 
                 <div class="card custom mx-auto" style="background-color: #593f28; border: none; box-shadow: none;">
                     <form method="get" th:action="@{/pruebas/consulta2}">
                         <div class="card-header text-center" style="background-color: #593f28; color: white; padding: 10px;">
@@ -167,7 +167,7 @@
         <!-- 1 Seccion para mostrar las tarjetas de los pruductos en carrusel-->
         <section th:fragment="carrusel" style="background-color: #f8f4e8; margin-top: 25px">
             <div class="card-body p-4">
-                <div class="container" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold; padding: 2rem;">
+                <div class="container" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000; font-weight: bold; margin">
                     <div id="ofertasCarousel" class="carousel slide" data-bs-ride="carousel" style="background-color: #f8f9fa;">
                         <div class="carousel-inner">
                             <div th:each="r, iterStat : ${carrusell}">
@@ -175,9 +175,9 @@
                                     <div class="row row-cols-1 g-4">
                                         <div class="col">
                                             <div class="card h-100 shadow-sm" style="border: none; background-color: #f8f9fa;">
-                                                <img th:src="${r.rutaImagen}" class="card-img-top" alt="alt" style="height: 500px; object-fit: cover;">
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title">[[${r.descripcion}]]</h5>
+                                                <img th:src="${r.rutaImagen}" class="card-img-top" alt="alt" style="height: 500px; object-fit: cover; margin-bottom: 10px; margin-top: 10px">
+                                                    <div class="card-body text-center" style="background-color: #f8f4e8;">
+                                                        <h5 class="card-title" style="font-weight: bold;">[[${r.descripcion}]]</h5>
                                                     </div>
                                             </div>
                                         </div>
@@ -201,16 +201,16 @@
         <!-- 2 Seccion para mostrar las tarjetas de los productos EN EL INDEX -->
         <section th:fragment="tarjetasIndex" style="border: none; background-color: #f8f4e8;">
             <div class="container py-4"> 
-                <div class="row row-cols-1 row-cols-md-2 g-4"> 
-                    <div class="col" th:each="d : ${cards}">
-                        <div class="card h-100 shadow-sm border-0 rounded-lg" style="background-color: #8B5E3C;">
+                <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center" style="background-color: #f8f4e8; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; font-weight: bold; padding: 2rem;"> 
+                    <div class="col mb-4" th:each="d : ${cards}" >
+                        <div class="card h-100 shadow-sm border-0 rounded-lg" style="background-color: #593f28 ;">
                             <figure class="m-0">
                                 <img th:src="${d.rutaImagen}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="alt"/>
                             </figure>
                             <div class="card-header text-dark text-center" style="border: none; background-color: #fff6ed;">
                                 <h4 class="mb-0">[[${d.nombre}]]</h4>
                             </div>
-                            <div class="card-body text-dark fw-bold">
+                            <div class="card-body text-white fw-bold">
                                 <p class="card-text">[[${d.descripcion}]]</p>
                             </div>
                         </div>
