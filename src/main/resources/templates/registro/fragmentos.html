@@ -59,7 +59,7 @@
 
         <!-- 2 Fragmento que se utiliza activar un usuario -->
         <section th:fragment="activarUsuario">
-            <div class="row py-2 justify-content-center">
+            <div class="row py-2 justify-content-center"  style="background-color: #f8f4e8;">
                 <div class="col-md-6">
                     <form method="POST" th:action="@{/registro/activar}" th:object="${usuario}" class="was-validated" enctype="multipart/form-data">
                         <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
@@ -111,12 +111,12 @@
 
         <!-- 3 Fragmento que se utiliza recordar un usuario -->
         <section th:fragment="recordarUsuario">
-            <div class="row py-2 justify-content-start">
+            <div class="row py-2 justify-content-start" style="background-color: #f8f4e8; margin-bottom: 60px">
                 <div class="col-md-3">
                     <section>
                         <div class="col-md-4 d-grid">
                             <div class="card-body">
-                                <a th:href="@{/login}" class="btn btn-block" style="background-color: white; color: black; font-weight: bold;">
+                                <a th:href="@{/login}" class="btn btn-block" style="background-color: #f8f4e8; color: black; font-weight: bold;">
                                     <i class='fas fa-reply'></i> [[#{accion.regresar}]]
                                 </a>
                             </div>
@@ -125,7 +125,7 @@
                 </div>
             </div>
             <div class="row py-2 justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-6" style="background-color: #f8f4e8;">
                     <form method="POST" th:action="@{/registro/recordarUsuario}" th:object="${usuario}" class="was-validated">
                         <div class="card shadow-sm border-0">
                             <div class="card-header" style="background-color: #000000; color: white;">
