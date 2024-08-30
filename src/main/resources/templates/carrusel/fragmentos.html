@@ -5,7 +5,7 @@
     <head th:replace="~{layout/plantilla :: head}">
         <title>PaMonchar</title>
     </head>
-    <body >
+    <body>
         <!-- 1 Fragmento para agregar carrusel, es la ventana modal -->
         <section th:fragment="agregarCarrusel">
             <div><h1>ㅤ</h1></div>
@@ -13,13 +13,13 @@
             <div id="agregarCarrusel" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
-                        <div class="modal-header" style="background-color: black; color: white;">
+                        <div class="modal-header" style="background-color: #593f28; color: white;">
                             <h5 class="modal-title"><i class="fas fa-plus-circle" style="color: white;"></i> [[#{carrusel.agregar}]]</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color:#ff0000;"></button>
                         </div>
 
                         <form th:action="@{/carrusel/guardar}" th:object="${carrusel}" method="POST" class="was-validated" enctype="multipart/form-data">
-                            <div class="modal-body">
+                            <div class="modal-body" style="background-color: #f8f4e8;">
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label"><i class="fas fa-tag"></i> [[#{carrusel.nombre}]]</label>
                                     <input type="text" class="form-control" name="nombre" required="true"/>
@@ -38,7 +38,7 @@
                                     <img id="blah" src="#" alt="your image" class="img-fluid mt-2" style="display: none;"/>
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer" style="background-color: #f8f4e8;">
                                 <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Guardar</button>
                             </div>
                         </form>
@@ -47,18 +47,18 @@
             </div>
         </section>
 
-        <!-- 2 Sección principal para mostrar la informaccion de la entidad carrusel -->
+        <!-- 2 Sección principal para mostrar la información de la entidad carrusel -->
         <section th:fragment="listadoCarrusel" id="carrusell">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-9">
                         <div class="card shadow-lg">
-                            <div class="card-header text-white text-center" style="background-color:#161616;">
+                            <div class="card-header" style="background-color: #593f28; color: white;">
                                 <h4><i class="fas fa-list"></i> [[#{carrusel.listado}]]</h4>
                             </div>
                             <div th:if="${carrusell != null and !carrusell.empty}">
                                 <table class="table table-bordered table-hover">
-                                    <thead class="bg-dark text-white">
+                                    <thead style="background-color: #593f28; color: white;">
                                         <tr>
                                             <th>#</th>
                                             <th>[[#{carrusel.nombre}]]</th>
@@ -99,21 +99,21 @@
                         <div class="row justify-content-center">
                             <div class="col-md-3">
                                 <!-- Botón de Agregar Carrusel -->
-                                <div class="card text-center bg-white text-black mb-3 shadow-sm">
+                                <div class="card text-center" style="background-color: #f8f4e8; color: black; margin-bottom: 1rem;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000;">
                                     <div class="card-body">
                                         <button 
                                             sec:authorize="hasRole('ROLE_ADMIN')"
                                             type="button" 
                                             class="btn btn-block" 
-                                            style="background-color: white; color: black; font-weight: bold;"
+                                            style="background-color: #f8f4e8; color: black; font-weight: bold;"
                                             data-bs-toggle="modal" 
                                             data-bs-target="#agregarCarrusel">
                                             <i class="fas fa-plus"></i> [[#{carrusel.agregar}]]
                                         </button>
                                     </div>
                                 </div>
-                                <!-- Cuadro de Total Carrusels -->
-                                <div class="card text-center bg-white text-black mb-3 shadow-sm">
+                                <!-- Cuadro de Total Carruseles -->
+                                <div class="card text-center" style="background-color: #f8f4e8; color: black; margin-bottom: 1rem;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000;">
                                     <div class="card-body">
                                         <h3>[[#{carrusel.total}]]</h3>
                                         <h4 class="fs-2"><i class="fas fa-bell-concierge" style="color: black;"></i> [[${totalCarrusell}]]</h4>
@@ -126,7 +126,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- 3 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="editarCarrusel">
@@ -141,7 +140,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="card shadow-lg">
-                                            <div class="card-header bg-dark text-white text-center">
+                                            <div class="card-header" style="background-color: #593f28; color: white;">
                                                 <h4><i class="fas fa-edit"></i> [[#{accion.actualizar}]]</h4>
                                             </div>
                                             <div class="card-body">
@@ -172,24 +171,22 @@
             </div>
         </section>
 
-
         <!-- 4 Fragmento que se utiliza en el fragmento anterior -->
         <section th:fragment="botonesEditar">
-            <div class="container py-4 mb-4 bg-light">
+            <div class="container py-4 mb-4" style="background-color: #f8f4e8;">
                 <div class="row">
                     <div class="col-md-4 d-grid">
-                        <a th:href="@{/carrusel/listado}" class="btn btn-primary">
+                        <a th:href="@{/carrusel/listado}" class="btn text-white" style="background-color: #000000; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem;">
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">                                
-                        <a th:href="@{/carrusel/eliminar/}+${carrusel.idCarrusel}"
-                           class="btn btn-danger">
+                        <a th:href="@{/carrusel/eliminar/}+${carrusel.idCarrusel}" class="btn btn-danger text-white" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem;">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem;">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>

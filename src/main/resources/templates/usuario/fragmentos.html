@@ -114,12 +114,12 @@
                         <div class="row justify-content-center">
                             <div class="col-md-3">
                                 <!-- Botón de Agregar Usuario -->
-                                <div class="card text-center bg-white text-black mb-3 shadow-sm">
+                                <div class="card text-center" style="background-color: #f8f4e8; color: black; margin-bottom: 1rem;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000;">
                                     <div class="card-body">
                                         <button 
                                             type="button" 
                                             class="btn btn-block" 
-                                            style="background-color: white; color: black; font-weight: bold;"
+                                            style="background-color: #f8f4e8; color: black; font-weight: bold;"
                                             data-bs-toggle="modal" 
                                             data-bs-target="#agregarUsuario">
                                             <i class="fas fa-plus"></i> [[#{usuario.agregar}]]
@@ -127,7 +127,7 @@
                                     </div>
                                 </div>
                                 <!-- Cuadro de Total Usuarios -->
-                                <div class="card text-center bg-white text-black mb-3 shadow-sm">
+                                <div class="card text-center" style="background-color: #f8f4e8; color: black; margin-bottom: 1rem;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem; color: #000;">
                                     <div class="card-body">
                                         <h3>[[#{usuario.total}]]</h3>
                                         <h4 class="fs-2"><i class="fas fa-users" style="color: black;"></i> [[${totalUsuarios}]]</h4>
@@ -191,21 +191,20 @@
 
         <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
         <section th:fragment="botonesEditar">
-            <div class="container py-4 mb-4 bg-light">
+            <div class="container py-4 mb-4" style="background-color: #f8f4e8;">
                 <div class="row">
                     <div class="col-md-4 d-grid">
-                        <a th:href="@{/usuario/listado}" class="btn btn-primary">
+                        <a th:href="@{/usuario/listado}" class="btn text-white" style="background-color: #000000; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem;">
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">                                
-                        <a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
-                           class="btn btn-danger">
+                        <a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}" class="btn btn-danger text-white" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem;">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); border-radius: 0.375rem;">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>
