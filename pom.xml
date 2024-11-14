@@ -8,11 +8,11 @@
         <version>3.3.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.pamonchar</groupId>
-    <artifactId>Pamonchar</artifactId>
+    <groupId>com.pizzeria</groupId>
+    <artifactId>Pizzeria</artifactId>
     <version>1</version>
-    <name>PamoncharP</name>
-    <description>Proyecto Restaurante de Web y Patrones 2C 2024 Viernes Intermedio</description>
+    <name>Pizzeria</name>
+    <description>Proyecto Lenguaje Base de Datos</description>
     <properties>
         <java.version>20</java.version>
     </properties>
