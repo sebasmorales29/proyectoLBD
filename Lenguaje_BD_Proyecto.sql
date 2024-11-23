@@ -1,6 +1,5 @@
 /*Creacion del Archivo SQL*/
 /*Pizza la zompopa*/
---Jean Paulo Hola
 /*
 1. Tabla usuarios
 * Atributos:
