@@ -22,8 +22,11 @@ CREATE TABLE Usuario (
     correo VARCHAR2(150) UNIQUE NOT NULL,
     contrasena VARCHAR2(100) NOT NULL,
     id_rol NUMBER REFERENCES Rol(id_rol),
+<<<<<<< HEAD
     id_direccion NUMBER REFERENCES Direccion(id_direccion),
     id_telefono NUMBER REFERENCES Telefono(id_telefono),
+=======
+>>>>>>> 344966c058ef9accabd1c0893a5c4dbc1572f431
     activo CHAR(1) DEFAULT 'Y'
 );
 
