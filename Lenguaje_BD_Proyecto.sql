@@ -96,42 +96,4 @@ CREATE SEQUENCE SEQ_DETALLE_FACTURA START WITH 1;
 CREATE SEQUENCE SEQ_OFERTAS START WITH 1;
 CREATE SEQUENCE SEQ_HISTORIAL_VENTAS START WITH 1;
 
---************************AGREGAR DATOS A LAS TABLAS **************************
---GRUPO 1 LBD
-
-INSERT INTO CATEGORIA(id_categoria,descripcion,activo)
-VALUES(seq_categoria.nextval,'Pizza','Y');
-
-
-
-INSERT INTO rol(id_rol,nombre)
-VALUES(seq_rol.nextval,'admin');
-
-
-INSERT INTO direccion(id_direccion,provincia,ciudad,ubicacion_exacta,id_usuario)
-VALUES(seq_direccion.nextval,'Pizza','Y');
-
-INSERT INTO telefono(id_telefono,provincia,ciudad,ubicacion_exacta,id_usuario)
-VALUES(seq_categoria.nextval,'Pizza','Y');
-
-
-
-
-
-INSERT INTO usuario(id_usuario,nombre_usuario,nombre,prim_apellido,seg_apellido,correo,contrasena,id_rol,id_direccion,id_telefono,activo)
-VALUES(seq_usuario.nextval,'Jimmybar17','Jimmy','Barquero','Granados','jbg@gmail.com','123',1,1,1,'y');
-
-
-
-
-DROP TABLE Detalle_Factura CASCADE CONSTRAINTS;
-DROP TABLE Factura CASCADE CONSTRAINTS;
-DROP TABLE Producto CASCADE CONSTRAINTS;
-DROP TABLE Telefono CASCADE CONSTRAINTS;
-DROP TABLE Direccion CASCADE CONSTRAINTS;
-DROP TABLE Usuario CASCADE CONSTRAINTS;
-DROP TABLE Categoria CASCADE CONSTRAINTS;
-DROP TABLE Rol CASCADE CONSTRAINTS;
-DROP TABLE Historial_Ventas CASCADE CONSTRAINTS;
-DROP TABLE Ofertas CASCADE CONSTRAINTS;
 
