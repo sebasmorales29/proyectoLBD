@@ -23,8 +23,6 @@ CREATE TABLE Usuario (
     correo VARCHAR2(150) UNIQUE NOT NULL,
     contrasena VARCHAR2(100) NOT NULL,
     id_rol NUMBER REFERENCES Rol(id_rol),
-    id_direccion NUMBER,
-    id_telefono NUMBER,
     activo CHAR(1) DEFAULT 'Y'
 );
 CREATE SEQUENCE SEQ_USUARIO START WITH 1;
