@@ -22,8 +22,6 @@ CREATE TABLE Usuario (
     correo VARCHAR2(150) UNIQUE NOT NULL,
     contrasena VARCHAR2(100) NOT NULL,
     id_rol NUMBER REFERENCES Rol(id_rol),
-    id_direccion NUMBER REFERENCES Direccion(id_direccion),
-    id_telefono NUMBER REFERENCES Telefono(id_telefono),
     activo CHAR(1) DEFAULT 'Y'
 );
 
@@ -31,12 +29,14 @@ CREATE TABLE Direccion (
     id_direccion NUMBER PRIMARY KEY,
     provincia VARCHAR2(100) NOT NULL,
     ciudad VARCHAR2(100) NOT NULL,
-    ubicacion_exacta VARCHAR2(255)
+    ubicacion_exacta VARCHAR2(255),
+    id_usuario NUMBER REFERENCES Usuario(id_usuario)
 );
 
 CREATE TABLE Telefono (
     id_telefono NUMBER PRIMARY KEY,
-    numero_telefono VARCHAR2(15) NOT NULL
+    numero_telefono VARCHAR2(15) NOT NULL,
+    id_usuario NUMBER REFERENCES Usuario(id_usuario)
 );
 
 CREATE TABLE Producto (
