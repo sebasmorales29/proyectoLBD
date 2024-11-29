@@ -72,6 +72,51 @@ CREATE OR REPLACE PACKAGE CRUD AS
     p_numero_telefono VARCHAR2,
     p_id_usuario NUMBER
     );
+    
+    --Procedimientos usuario
+        PROCEDURE crear_usuario(
+        p_nombre_usuario VARCHAR2,
+        p_nombre VARCHAR2,
+        p_prim_apellido VARCHAR2,
+        p_seg_apellido VARCHAR2,
+        p_correo VARCHAR2,
+        p_contrasena VARCHAR2,
+        p_id_rol NUMBER
+    );
+    
+        PROCEDURE actualizar_usuario(
+        p_id_usuario NUMBER,
+        p_nombre_usuario VARCHAR2,
+        p_nombre VARCHAR2,
+        p_prim_apellido VARCHAR2,
+        p_seg_apellido VARCHAR2,
+        p_correo VARCHAR2,
+        p_contrasena VARCHAR2,
+        p_id_rol NUMBER
+    );
+    
+        PROCEDURE eliminar_usuario(
+        p_id_usuario NUMBER
+    );
+    
+    --Procedimientos ofertas
+     PROCEDURE crear_oferta(
+        p_nombre VARCHAR2,
+        p_descripcion VARCHAR2,
+        p_imagen BLOB
+    );
+
+    PROCEDURE actualizar_oferta(
+        p_id_ofertas NUMBER,
+        p_nombre VARCHAR2,
+        p_descripcion VARCHAR2,
+        p_imagen BLOB
+    );
+
+    PROCEDURE eliminar_oferta(
+        p_id_ofertas NUMBER
+    );
+    
 END CRUD;
 /
 
