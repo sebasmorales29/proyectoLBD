@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.Modifying;
 
 @Repository
 public interface OfertaRepository extends JpaRepository<Oferta, Long> {
@@ -13,7 +13,8 @@ public interface OfertaRepository extends JpaRepository<Oferta, Long> {
     
 
     // Llamada para agregar una oferta
-    @Query(value = "{CALL CRUD.CREAR_OFERTA(:nombre, :descripcion, :imagen }", nativeQuery = true)
+    @Modifying
+    @Query(value = "{CALL CRUD.CREAR_OFERTA(:nombre, :descripcion, :imagen )}", nativeQuery = true)
     void agregarOferta(@Param("nombre") String nombre, @Param("descripcion") String descripcion, @Param("imagen") String imagen);
 
     // Llamada para editar una oferta existente

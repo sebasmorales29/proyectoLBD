@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/ofertas") // Prefijo base
@@ -27,8 +28,15 @@ public class OfertaController {
     @PostMapping("/agregar")
     public String agregarOferta(@RequestParam String nombre,
                                 @RequestParam String descripcion,
-                                @RequestParam String imagen) {
-        ofertaService.agregarOferta(nombre, descripcion,imagen );
+                                @RequestParam String imagen,
+                                RedirectAttributes redirectAttributes) {
+                                    try{ofertaService.agregarOferta(nombre, descripcion,imagen );
+                                    
+                                    } catch (Exception e) {
+                                        redirectAttributes.addFlashAttribute("error", "Error al agregar la oferta: " + e.getMessage());
+                                        return "redirect:/ofertas";
+                                    }
+        
         return "redirect:/ofertas";
     }
 
