@@ -13,7 +13,7 @@ public interface OfertaRepository extends JpaRepository<Oferta, Long> {
     
 
     // Llamada para agregar una oferta
-    @Modifying
+   // @Modifying
     @Query(value = "{CALL CRUD.CREAR_OFERTA(:nombre, :descripcion, :imagen )}", nativeQuery = true)
     void agregarOferta(@Param("nombre") String nombre, @Param("descripcion") String descripcion, @Param("imagen") String imagen);
 
