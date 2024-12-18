@@ -171,7 +171,7 @@ PROCEDURE crear_usuario(
     PROCEDURE crear_oferta(
         p_nombre VARCHAR2,
         p_descripcion VARCHAR2,
-        p_imagen BLOB
+        p_imagen VARCHAR2
     ) IS
     BEGIN
         INSERT INTO Ofertas (
@@ -185,7 +185,7 @@ PROCEDURE crear_usuario(
         p_id_ofertas NUMBER,
         p_nombre VARCHAR2,
         p_descripcion VARCHAR2,
-        p_imagen BLOB
+        p_imagen VARCHAR2
     ) IS
     BEGIN
         UPDATE Ofertas
