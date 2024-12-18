@@ -46,14 +46,24 @@ public class OfertaController {
                                @RequestParam String nombre,
                                @RequestParam String descripcion,
                                @RequestParam String estado) {
-        ofertaService.editarOferta(id, nombre, descripcion, estado);
+                                try{ofertaService.editarOferta(id, nombre, descripcion, estado);
+
+                                }catch (Exception e) {
+                                    return "redirect:/ofertas";
+                                }
+        
         return "redirect:/ofertas";
     }
 
     // Eliminar una oferta
     @PostMapping("/eliminar/{id}")
     public String eliminarOferta(@PathVariable Long id) {
-        ofertaService.eliminarOferta(id);
+        try{ofertaService.eliminarOferta(id);
+
+        }catch (Exception e) {
+            return "redirect:/ofertas";
+        }
+        
         return "redirect:/ofertas";
     }
 }
