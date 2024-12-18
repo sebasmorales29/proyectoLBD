@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ofertas Disponibles</title>
+</head>
+<body>
+    <h1>Ofertas Disponibles</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="oferta : ${ofertas}">
+                <td th:text="${oferta.id}">1</td>
+                <td th:text="${oferta.nombre}">1</td>
+                <td th:text="${oferta.descripcion}">1</td>
+               <!-- <td th:text="${oferta.imagen}">1</td>   -->
+                <td th:text="${oferta.estado}">1</td>
+                <td>
+                    <!-- Botón Editar -->
+                    <form th:action="@{'/ofertas/editar/' + ${oferta.id}}" method="get">
+                        <button type="submit">Editar</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+

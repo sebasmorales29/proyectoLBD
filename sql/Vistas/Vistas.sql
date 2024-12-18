@@ -9,6 +9,11 @@ SELECT id_categoria, descripcion,
     END AS estado
 FROM Categoria;
 /
+
+
+
+
+
 --producto
 CREATE OR REPLACE VIEW v_producto AS
 SELECT p.id_producto,p.nombre,p.descripcion,p.precio,p.existencias,c.descripcion AS categoria,
