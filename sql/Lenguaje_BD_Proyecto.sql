@@ -1,16 +1,36 @@
 /*Creacion del Archivo SQL*/
 /*Pizza la zompopa*/
 
-
-CREATE TABLE Rol (
-    id_rol NUMBER PRIMARY KEY,
-    nombre VARCHAR2(100) NOT NULL
-);
-
+--Productos
 CREATE TABLE Categoria (
     id_categoria NUMBER PRIMARY KEY,
     descripcion VARCHAR2(255) NOT NULL,
     activo CHAR(1) DEFAULT 'Y'
+);
+
+CREATE TABLE Producto (
+    id_producto NUMBER PRIMARY KEY,
+    nombre VARCHAR2(100) NOT NULL,
+    descripcion VARCHAR2(255),
+    precio NUMBER(10, 2) NOT NULL,
+    existencias NUMBER DEFAULT 0,
+    activo CHAR(1) DEFAULT 'Y',
+    id_categoria NUMBER NOT NULL REFERENCES Categoria(id_categoria)
+);
+
+CREATE TABLE Ofertas (
+    id_ofertas NUMBER PRIMARY KEY,
+    nombre VARCHAR2(100) NOT NULL,
+    descripcion VARCHAR2(255),
+    imagen ,
+    activo CHAR(1) DEFAULT 'Y'
+);
+
+
+--Usuario
+CREATE TABLE Rol (
+    id_rol NUMBER PRIMARY KEY,
+    nombre VARCHAR2(100) NOT NULL
 );
 
 CREATE TABLE Usuario (
@@ -25,30 +45,7 @@ CREATE TABLE Usuario (
     activo CHAR(1) DEFAULT 'Y'
 );
 
-CREATE TABLE Direccion (
-    id_direccion NUMBER PRIMARY KEY,
-    provincia VARCHAR2(100) NOT NULL,
-    ciudad VARCHAR2(100) NOT NULL,
-    ubicacion_exacta VARCHAR2(255),
-    id_usuario NUMBER REFERENCES Usuario(id_usuario)
-);
-
-CREATE TABLE Telefono (
-    id_telefono NUMBER PRIMARY KEY,
-    numero_telefono VARCHAR2(15) NOT NULL,
-    id_usuario NUMBER REFERENCES Usuario(id_usuario)
-);
-
-CREATE TABLE Producto (
-    id_producto NUMBER PRIMARY KEY,
-    nombre VARCHAR2(100) NOT NULL,
-    descripcion VARCHAR2(255),
-    precio NUMBER(10, 2) NOT NULL,
-    existencias NUMBER DEFAULT 0,
-    activo CHAR(1) DEFAULT 'Y',
-    id_categoria NUMBER NOT NULL REFERENCES Categoria(id_categoria)
-);
-
+--Factura
 CREATE TABLE Factura (
     id_factura NUMBER PRIMARY KEY,
     fecha DATE DEFAULT SYSDATE,
@@ -72,29 +69,12 @@ CREATE TABLE Historial_Ventas (
 
 
 
-CREATE TABLE Ofertas (
-    id_ofertas NUMBER PRIMARY KEY,
-    nombre VARCHAR2(100) NOT NULL,
-    descripcion VARCHAR2(255),
-    imagen BLOB,
-    activo CHAR(1) DEFAULT 'Y'
-);
 
-
-
---************************CREACION DE SECUENCIAS **************************
+--************************CREACION DE SECUENCIAS CON TRIGGERS **************************
 --GRUPO 1 LBD
 
-CREATE SEQUENCE SEQ_ROL START WITH 1;
-CREATE SEQUENCE SEQ_CATEGORIA START WITH 1;
-CREATE SEQUENCE SEQ_USUARIO START WITH 1;
-CREATE SEQUENCE SEQ_DIRECCION START WITH 1;
-CREATE SEQUENCE SEQ_TELEFONO START WITH 1;
-CREATE SEQUENCE SEQ_PRODUCTO START WITH 1;
-CREATE SEQUENCE SEQ_FACTURA START WITH 1;
-CREATE SEQUENCE SEQ_DETALLE_FACTURA START WITH 1;
-CREATE SEQUENCE SEQ_OFERTAS START WITH 1;
-CREATE SEQUENCE SEQ_HISTORIAL_VENTAS START WITH 1;
+
+ 
 
 
 
