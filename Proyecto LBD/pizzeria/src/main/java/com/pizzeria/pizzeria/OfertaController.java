@@ -21,7 +21,7 @@ public class OfertaController {
     @GetMapping
     public String mostrarOfertas(Model model) {
         model.addAttribute("ofertas", ofertaService.obtenerTodasLasOfertas());
-        return "ofertas"; // Plantilla Thymeleaf
+        return "ofertas/ofertas"; // Plantilla Thymeleaf
     }
 
     // Agregar una nueva oferta
@@ -34,10 +34,10 @@ public class OfertaController {
                                     
                                     } catch (Exception e) {
                                         redirectAttributes.addFlashAttribute("error", "Error al agregar la oferta: " + e.getMessage());
-                                        return "redirect:/ofertas";
+                                        return "redirect:ofertas/ofertas";
                                     }
         
-        return "redirect:/ofertas";
+        return "redirect:ofertas/ofertas";
     }
 
     // Editar una oferta existente
@@ -49,10 +49,10 @@ public class OfertaController {
                                 try{ofertaService.editarOferta(id, nombre, descripcion, estado);
 
                                 }catch (Exception e) {
-                                    return "redirect:/ofertas";
+                                    return "redirect:ofertas/ofertas";
                                 }
         
-        return "redirect:/ofertas";
+        return "redirect:ofertas/ofertas";
     }
 
     // Eliminar una oferta
@@ -61,9 +61,9 @@ public class OfertaController {
         try{ofertaService.eliminarOferta(id);
 
         }catch (Exception e) {
-            return "redirect:/ofertas";
+            return "redirect:ofertas/ofertas";
         }
         
-        return "redirect:/ofertas";
+        return "redirect:ofertas/ofertas";
     }
 }
