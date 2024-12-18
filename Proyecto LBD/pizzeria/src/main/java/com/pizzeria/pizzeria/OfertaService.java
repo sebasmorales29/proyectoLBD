@@ -13,5 +13,16 @@ public class OfertaService {
         return ofertaRepository.findAll();
     }
 
+    public void agregarOferta(String nombre, String descripcion, String imagen) {
+        ofertaRepository.agregarOferta(nombre, descripcion,imagen);
+    }
+
+    public void editarOferta(Long id, String nombre, String descripcion, String estado) {
+        ofertaRepository.editarOferta(id, nombre, descripcion, estado);
+    }
+
+    public void eliminarOferta(Long id) {
+        ofertaRepository.eliminarOferta(id);
+    }
     
 }

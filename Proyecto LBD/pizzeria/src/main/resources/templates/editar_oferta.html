@@ -5,19 +5,15 @@
 </head>
 <body>
     <h2>Editar Oferta</h2>
-    <form th:action="@{/ofertas/actualizar}" th:object="${oferta}" method="post" enctype="multipart/form-data">
-        <input type="hidden" th:field="*{id_ofertas}" />
-
-        <label>Nombre:</label>
-        <input type="text" th:field="*{nombre}" required/><br/>
-
-        <label>Descripción:</label>
-        <textarea th:field="*{descripcion}" required></textarea><br/>
-
-        <label>Imagen (opcional):</label>
-        <input type="file" name="imagen"/><br/>
-
-        <button type="submit">Actualizar</button>
+    <form th:action="@{/ofertas}" th:object="${oferta}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" th:field="*{nombre}" />
+        <label for="descripcion">Descripción:</label>
+        <input id="descripcion" th:field="*{descripcion}" />
+        <label for="estado">Estado:</label>
+        <input id="estado" th:field="*{estado}" />
+        <button type="submit">Guardar</button>
     </form>
     <a th:href="@{/ofertas}">Regresar</a>
 </body>

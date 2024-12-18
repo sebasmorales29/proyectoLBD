@@ -18,8 +18,8 @@ public class Oferta {
    @Column(name = "DESCRIPCION")
    private String descripcion;
 
- // @Column(name = "IMAGEN")
- // private String imagen; 
+  @Column(name = "IMAGEN")
+  private String imagen; 
 
     @Column(name = "ESTADO")
     private String estado;
@@ -50,7 +50,7 @@ public class Oferta {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-/*
+
     public String getImagen() {
         return imagen;
     }
@@ -59,7 +59,7 @@ public class Oferta {
         this.imagen = imagen;
     }
 
-   */ 
+
     
 
     public String getEstado() {
