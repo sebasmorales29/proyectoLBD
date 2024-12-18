@@ -69,11 +69,6 @@ CREATE TABLE Historial_Ventas (
 
 
 
-
---************************CREACION DE SECUENCIAS CON TRIGGERS **************************
---GRUPO 1 LBD
-
-
  
 
 
