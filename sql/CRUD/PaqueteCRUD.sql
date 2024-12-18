@@ -1,6 +1,6 @@
 --paquete
 
--- Especificación del paquete CRUD
+-- Especificaciï¿½n del paquete CRUD
 CREATE OR REPLACE PACKAGE CRUD AS
     -- Procedimientos para Categoria
     PROCEDURE insertar_categoria(
@@ -103,14 +103,14 @@ CREATE OR REPLACE PACKAGE CRUD AS
      PROCEDURE crear_oferta(
         p_nombre VARCHAR2,
         p_descripcion VARCHAR2,
-        p_imagen BLOB
+        p_imagen VARCHAR2
     );
 
     PROCEDURE actualizar_oferta(
         p_id_ofertas NUMBER,
         p_nombre VARCHAR2,
         p_descripcion VARCHAR2,
-        p_imagen BLOB
+        p_imagen VARCHAR2
     );
 
     PROCEDURE eliminar_oferta(
