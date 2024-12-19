@@ -63,7 +63,6 @@ public String agregarUsuario(@RequestParam String nombre_usuario,
                                 @RequestParam String correo,
                                 @RequestParam String contrasena,
                                 @RequestParam Integer id_rol,
-                                
                                 @RequestParam String activo,
                                 RedirectAttributes redirectAttributes) {
         try {

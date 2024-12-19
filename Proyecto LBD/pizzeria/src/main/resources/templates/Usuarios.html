@@ -110,12 +110,8 @@
                             <!-- Formulario para editar -->
                             <form action="/usuarios/editar" method="post" class="d-inline">
                                 <input type="hidden" name="id_usuario" th:value="${usuario.id_usuario}">
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="collapse"
-                                    data-bs-target="#editForm-${usuario.id_usuario}" aria-expanded="false"
-                                    aria-controls="editForm-${usuario.id_usuario}">
-                                    Editar
-                                </button>
-                                <div id="editForm-${usuario.id_usuario}" class="collapse mt-2">
+                                
+                              
                                     <input name="nombre_usuario" class="form-control mb-2 bg-dark text-light"
                                         th:value="${usuario.nombre_usuario}" required>
                                     <input name="nombre" class="form-control mb-2 bg-dark text-light"
@@ -136,7 +132,7 @@
                                     <input name="activo" class="form-control mb-2 bg-dark text-light"
                                         th:value="${usuario.activo}" required>
                                     <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
-                                </div>
+                               
                             </form>
                         </td>
                     </tr>
