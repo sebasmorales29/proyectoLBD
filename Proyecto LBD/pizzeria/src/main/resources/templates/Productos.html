@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Lista de Productos</title>
 </head>
+
 <body>
     <h1>Lista de Productos</h1>
+
+    <!-- Formulario para editar -->
+    <form action="/productos/agregar" method="post">
+        <input name="nombre" placeholder="Nombre" required>
+        <input name="descripcion" placeholder="Descripción" required>
+        <input name="precio" placeholder="Precio" required>
+        <input name="existencias" placeholder="Existencias" required>
+        <select name="estado">
+            <option value="Y">Activo</option>
+            <option value="N">Inactivo</option>
+        </select>
+        <input name="categoria" placeholder="Categoria" required>
+        <button type="submit">Agregar Categoría</button>
+    </form>
     <table border="1">
         <thead>
             <tr>
@@ -13,22 +29,37 @@
                 <th>Precio</th>
                 <th>Descripcion</th>
                 <th>Existencias</th>
-                <th>Categoria</th>
+                <th>producto</th>
                 <th>Estado</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="producto : ${productos}">
-                <td th:text="${producto.idProducto}"></td>
+                <td th:text="${producto.id}"></td>
                 <td th:text="${producto.nombre}"></td>
                 <td th:text="${producto.precio}"></td>
                 <td th:text="${producto.descripcion}"></td>
                 <td th:text="${producto.existencias}"></td>
                 <td th:text="${producto.categoria}"></td>
                 <td th:text="${producto.estado}"></td>
-                
+                <td>
+                    <form action="/productos/editar" method="post">
+                        <input type="hidden" name="id" th:value="${producto.id}">
+                        <input name="nombre" th:value="${producto.nombre}" required>
+                        <input name="descripcion" th:value="${producto.descripcion}" required>
+                        <input name="precio" th:value="${producto.precio}" required>
+                        <input name="existencias" th:value="${producto.existencias}" required>
+                        <select name="estado">
+                            <option value="Y">Activo</option>
+                            <option value="N">Inactivo</option>
+                            <input name="categoria" th:value="${producto.categoria}" required>
+                        </select>
+                        <button type="submit">Editar</button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>
 </body>
+
 </html>

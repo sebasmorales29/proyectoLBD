@@ -1,44 +1,43 @@
 package com.pizzeria.pizzeria;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Immutable;
 
 
 @Entity
-@Immutable 
-
 @Table(name = "V_PRODUCTO")
 
 public class Producto {
 
     @Id
-    @Column(name = "ID_PRODUCTO", nullable = false) //Llave primaria
-    private Long idProducto;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_PRODUCTO") 
+    private Long id;
 
     @Column(name = "NOMBRE")
     private String nombre;
 
-   @Column(name = "PRECIO")
-   private Double precio;
+    @Column(name = "PRECIO")
+    private Double precio;
 
     @Column(name = "DESCRIPCION")
     private String descripcion;
 
-  @Column(name = "EXISTENCIAS")
-   private Integer existencias; 
+    @Column(name = "EXISTENCIAS")
+    private Integer existencias;
+
+    @Column(name = "ESTADO")
+    private String estado;
 
     @Column(name = "CATEGORIA")
-    private String categoria; 
-   @Column(name = "ESTADO")
-   private String estado;
+    private String categoria;
 
     // Getters y Setters
-    public Long getIdProducto() {
-        return idProducto;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProducto(Long idProducto) {
-        this.idProducto = idProducto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -57,7 +56,6 @@ public class Producto {
         this.precio = precio;
     }
 
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -66,24 +64,13 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-        
-
-    public Integer getExistencias() { 
+    public Integer getExistencias() {
         return existencias;
     }
 
-    public void setExistencias(Integer existencias) { 
+    public void setExistencias(Integer existencias) {
         this.existencias = existencias;
     }
-
-    public String getCategoria() { 
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) { 
-        this.categoria = categoria;
-    }
-    
 
     public String getEstado() {
         return estado;
@@ -93,5 +80,12 @@ public class Producto {
         this.estado = estado;
     }
 
-   
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
 }
