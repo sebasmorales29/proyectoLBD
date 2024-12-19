@@ -17,8 +17,21 @@ SELECT id_rol, nombre
 FROM Rol;
 
 CREATE OR REPLACE VIEW v_usuario AS
-SELECT id_usuario, nombre_usuario, nombre, prim_apellido, seg_apellido, correo, id_rol, activo
-FROM Usuario;
+SELECT 
+    u.id_usuario,
+    u.contrasena,
+    u.correo,
+    u.activo,
+    u.id_rol,
+    u.nombre,
+    u.nombre_usuario,
+    u.prim_apellido,
+    u.seg_apellido,
+    r.nombre AS rol
+FROM 
+    usuario u
+LEFT JOIN 
+    rol r ON u.id_rol = r.id_rol;
 
 CREATE OR REPLACE VIEW v_factura AS
 SELECT id_factura, fecha, total, id_usuario
