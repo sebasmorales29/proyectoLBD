@@ -23,9 +23,10 @@ public class UsuarioController {
 
     @GetMapping
     public String mostrarUsuarios(Model model) {
+        
         model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
         model.addAttribute("roles", rolService.obtenerRoles());
-        return "/usuarios"; // Plantilla Thymeleaf
+        return "/usuarios";
     }
 
     @PostMapping("/agregar")
@@ -62,9 +63,11 @@ public String agregarUsuario(@RequestParam String nombre_usuario,
                                 @RequestParam String correo,
                                 @RequestParam String contrasena,
                                 @RequestParam Integer id_rol,
+                                
                                 @RequestParam String activo,
                                 RedirectAttributes redirectAttributes) {
         try {
+            System.out.println("Datos recibidos: "+  id_usuario + ",     " + nombre_usuario + ", " + nombre + ", " + prim_apellido + ",  " + seg_apellido + ",   "+ correo + ",    "+ contrasena + ",    "+ id_rol + ",     "+ activo );
             usuarioService.editarUsuario(id_usuario, nombre_usuario, nombre, prim_apellido, seg_apellido, correo, contrasena, id_rol, activo);
             redirectAttributes.addFlashAttribute("success", "Usuario editado exitosamente.");
         } catch (Exception e) {

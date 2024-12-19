@@ -19,8 +19,8 @@ public class UsuarioService {
     
 
     public void editarUsuario(Integer id_usuario, String nombre_usuario, String nombre, String prim_apellido, String seg_apellido, String correo, String contrasena, Integer id_rol, String activo) {
-        System.out.println("Editando usuario con ID: " + id_usuario);
-        usuarioRepository.editarUsuario(id_usuario, nombre_usuario, nombre, prim_apellido, seg_apellido, correo, contrasena, id_rol, activo);
+        usuarioRepository.editarUsuario(id_usuario, nombre_usuario, nombre, prim_apellido, seg_apellido, correo, contrasena, id_rol,activo);
+    
     }
     
 

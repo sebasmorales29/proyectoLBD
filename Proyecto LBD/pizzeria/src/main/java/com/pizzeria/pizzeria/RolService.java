@@ -10,6 +10,6 @@ public class RolService {
     private RolRepository rolRepository;
 
     public List<Rol> obtenerRoles() {
-        return rolRepository.findAll();
+        return rolRepository.findAll(); // Devuelve todos los roles de la tabla
     }
 }
