@@ -127,7 +127,8 @@ PROCEDURE crear_usuario(
         p_seg_apellido VARCHAR2,
         p_correo VARCHAR2,
         p_contrasena VARCHAR2,
-        p_id_rol NUMBER
+        p_id_rol NUMBER,
+        p_activo CHAR
     ) IS
     BEGIN
         INSERT INTO Usuario (
@@ -135,7 +136,7 @@ PROCEDURE crear_usuario(
             correo, contrasena, id_rol, activo
         ) VALUES (
             SEQ_USUARIO.NEXTVAL, p_nombre_usuario, p_nombre, p_prim_apellido, p_seg_apellido,
-            p_correo, p_contrasena, p_id_rol, 'Y'
+            p_correo, p_contrasena, p_id_rol, activo
         );
     END;
     PROCEDURE actualizar_usuario(
