@@ -1,26 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="/" th:href="@{/}">Inicio</a></li>
-                    <li><a href="/ofertas" th:href="@{/ofertas}">Ofertas</a></li>
-                    <li><a href="/productos" th:href="@{/productos}">Productos</a></li>
-                    <li><a href="/categorias" th:href="@{/categorias}">Categorias de Productos</a></li>
-                    <li><a href="/usuarios" th:href="@{/usuarios}">Gestion de usuarios</a></li>
-                  
-                </ul>
-            </nav>
-        </header>
-        <h1>Hola Mundo</h1>
-        <h2>Prueba</h2>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .carousel-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-item img {
+            height: 500px;
+            width: auto;   
+            object-fit: cover; 
+        }
+
+        .footer {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div th:insert="~{TemplateHeadFoot :: header}"></div>
+    <div class="container">
+        <div class="carousel-container">
+            <!-- Carrusel -->
+            <div id="pizzeriaCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img/photo1.jpeg" class="d-block w-100" alt="Foto 1" th:src="@{/img/photo1.jpeg}">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/photo2.jpeg" class="d-block w-100" alt="Foto 2" th:src="@{/img/photo2.jpeg}">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/photo3.jpeg" class="d-block w-100" alt="Foto 3" th:src="@{/img/photo3.jpeg}">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/photo4.jpeg" class="d-block w-100" alt="Foto 4" th:src="@{/img/photo4.jpeg}">
+                    </div>
+                </div>
+              
+                <button class="carousel-control-prev" type="button" data-bs-target="#pizzeriaCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#pizzeriaCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+
+        </div>
+        
+    </div>
+    <div class="footer" th:insert="~{TemplateHeadFoot :: footer}"></div>
+</body>
+
 </html>
