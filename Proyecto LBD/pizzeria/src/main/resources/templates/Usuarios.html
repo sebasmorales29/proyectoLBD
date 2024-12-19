@@ -1,84 +1,214 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Gestión de Usuarios</title>
+    <title>La Zompopa</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <div th:insert="~{TemplateHeadFoot :: header}"></div>
-    <h1>Gestión de Usuarios</h1>
+    <div th:fragment="header">
+        <header>
+            <main class="flex-shrink-0">
 
-    <!-- Tabla para listar usuarios -->
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Nombre</th>
-                <th>Primer Apellido</th>
-                <th>Segundo Apellido</th>
-                <th>Correo</th>
-                <th>Rol</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="usuario : ${usuarios}">
-                <td th:text="${usuario.id_usuario}"></td>
-                <td th:text="${usuario.nombre_usuario}"></td>
-                <td th:text="${usuario.nombre}"></td>
-                <td th:text="${usuario.prim_apellido}"></td>
-                <td th:text="${usuario.seg_apellido}"></td>
-                <td th:text="${usuario.correo}"></td>
-                <td th:text="${usuario.rol}"></td>
-                <td th:text="${usuario.activo}"></td>
-                <td>
-                    <!-- Formulario para editar -->
-                    <form action="/usuarios/editar" method="post">
-                        <input type="hidden" name="id_usuario" th:value="${usuario.id_usuario}">
-                        <input name="nombre_usuario" th:value="${usuario.nombre_usuario}" required>
-                        <input name="nombre" th:value="${usuario.nombre}" required>
-                        <input name="prim_apellido" th:value="${usuario.prim_apellido}" required>
-                        <input name="seg_apellido" th:value="${usuario.seg_apellido}">
-                        <input name="correo" type="email" th:value="${usuario.correo}" required>
-                        <input name="contrasena" type="password" th:value="${usuario.contrasena}" required>
-                        <select name="id_rol" required>
-                            <option th:each="rol : ${roles}" 
-                                    th:value="${rol.id}" 
-                                    th:selected="${usuario.id_rol == rol.id}"
-                                    th:text="${rol.nombre}">
-                            </option>
+                <nav class="navbar navbar-expand-lg py-3"
+                    style="background: linear-gradient(to right, #9e754f,#8a4d35 ); height: 110px; display: flex; justify-content: center; align-items: center;">
+                    <div class="container px-5" style="font-family:fantasy">
+                        <a class="navbar-brand" href="/" th:href="@{/}"><span class="fw-bolder "
+                                style="font-size: 40px; color: #000000;">La Zompopa</span></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation"><span
+                                class="navbar-toggler-icon"></span></button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+
+                                <li class="nav-item px-2" style="font-family:fantasy; font-size: 24px;">
+                                    <a class="nav-link" href="/categorias" th:href="@{/categorias}"
+                                        style="color: #000000;" onmouseover="this.style.color = '#ffffff ';"
+                                        onmouseout="this.style.color = '#000000';">
+                                        <i class="fa-solid fa-mug-saucer"></i> Categorias
+                                    </a>
+                                </li>
+
+                                <li class="nav-item px-2" style="font-family:fantasy; font-size: 24px;">
+                                    <a class="nav-link" href="/productos" th:href="@{/productos}"
+                                        style="color: #000000;" onmouseover="this.style.color = '#ffffff ';"
+                                        onmouseout="this.style.color = '#000000';">
+                                        <i class="fa-solid fa-mug-hot"></i> Productos
+                                    </a>
+                                </li>
+
+                                <li class="nav-item px-2" style="font-family:fantasy; font-size: 24px;">
+                                    <a class="nav-link" href="/ofertas" th:href="@{/ofertas}" style="color: #000000;"
+                                        onmouseover="this.style.color = '#ffffff ';"
+                                        onmouseout="this.style.color = '#000000';">
+                                        <i class="fas fa-cart-arrow-down"></i></i> Ofertas
+                                    </a>
+                                </li>
+
+                                <li class="nav-item px-2" style="font-family:fantasy; font-size: 24px;">
+                                    <a class="nav-link" href="/roles" th:href="@{/roles}" style="color: #000000;"
+                                        onmouseover="this.style.color = '#ffffff ';"
+                                        onmouseout="this.style.color = '#000000';">
+                                        <i class="fas fa-user-tag"></i> Roles
+                                    </a>
+                                </li>
+
+                                <li class="nav-item px-2" style="font-family:fantasy; font-size: 24px;">
+                                    <a class="nav-link" href="/usuarios" th:href="@{/usuarios}" style="color: #000000;"
+                                        onmouseover="this.style.color = '#ffffff ';"
+                                        onmouseout="this.style.color = '#000000';">
+                                        <i class="fas fa-users"></i> Usuarios
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </main>
+        </header>
+    </div>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Gestión de Usuarios</h1>
+
+        <!-- Tabla para listar usuarios -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-dark text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.id_usuario}"></td>
+                        <td th:text="${usuario.nombre_usuario}"></td>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td th:text="${usuario.prim_apellido}"></td>
+                        <td th:text="${usuario.seg_apellido}"></td>
+                        <td th:text="${usuario.correo}"></td>
+                        <td th:text="${usuario.rol}"></td>
+                        <td th:text="${usuario.activo}"></td>
+                        <td>
+                            <!-- Formulario para editar -->
+                            <form action="/usuarios/editar" method="post" class="d-inline">
+                                <input type="hidden" name="id_usuario" th:value="${usuario.id_usuario}">
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="collapse"
+                                    data-bs-target="#editForm-${usuario.id_usuario}" aria-expanded="false"
+                                    aria-controls="editForm-${usuario.id_usuario}">
+                                    Editar
+                                </button>
+                                <div id="editForm-${usuario.id_usuario}" class="collapse mt-2">
+                                    <input name="nombre_usuario" class="form-control mb-2 bg-dark text-light"
+                                        th:value="${usuario.nombre_usuario}" required>
+                                    <input name="nombre" class="form-control mb-2 bg-dark text-light"
+                                        th:value="${usuario.nombre}" required>
+                                    <input name="prim_apellido" class="form-control mb-2 bg-dark text-light"
+                                        th:value="${usuario.prim_apellido}" required>
+                                    <input name="seg_apellido" class="form-control mb-2 bg-dark text-light"
+                                        th:value="${usuario.seg_apellido}">
+                                    <input name="correo" type="email" class="form-control mb-2 bg-dark text-light"
+                                        th:value="${usuario.correo}" required>
+                                    <input name="contrasena" type="password"
+                                        class="form-control mb-2 bg-dark text-light" th:value="${usuario.contrasena}"
+                                        required>
+                                    <select name="id_rol" class="form-select mb-2 bg-dark text-light" required>
+                                        <option th:each="rol : ${roles}" th:value="${rol.id}"
+                                            th:selected="${usuario.id_rol == rol.id}" th:text="${rol.nombre}"></option>
+                                    </select>
+                                    <input name="activo" class="form-control mb-2 bg-dark text-light"
+                                        th:value="${usuario.activo}" required>
+                                    <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="text-center my-4">Agregar Usuario</h2>
+        <!-- Formulario para agregar usuario -->
+        <div class="card bg-secondary text-light">
+            <div class="card-header bg-dark">Nuevo Usuario</div>
+            <div class="card-body">
+                <form action="/usuarios/agregar" method="post" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nombre_usuario" class="form-label">Usuario</label>
+                        <input name="nombre_usuario" id="nombre_usuario" class="form-control bg-dark text-light"
+                            placeholder="Usuario" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input name="nombre" id="nombre" class="form-control bg-dark text-light" placeholder="Nombre"
+                            required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="prim_apellido" class="form-label">Primer Apellido</label>
+                        <input name="prim_apellido" id="prim_apellido" class="form-control bg-dark text-light"
+                            placeholder="Primer Apellido" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="seg_apellido" class="form-label">Segundo Apellido</label>
+                        <input name="seg_apellido" id="seg_apellido" class="form-control bg-dark text-light"
+                            placeholder="Segundo Apellido">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input name="correo" id="correo" type="email" class="form-control bg-dark text-light"
+                            placeholder="Correo" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="contrasena" class="form-label">Contraseña</label>
+                        <input name="contrasena" id="contrasena" type="password" class="form-control bg-dark text-light"
+                            placeholder="Contraseña" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_rol" class="form-label">Rol</label>
+                        <select name="id_rol" id="id_rol" class="form-select bg-dark text-light" required>
+                            <option th:each="rol : ${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
                         </select>
-                        <input name="activo" th:value="${usuario.activo}" required>
-                        <button type="submit">Editar Usuario</button>
-                    </form>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>Agregar Usuario</h2>
-    <!-- Formulario para agregar usuario -->
-    <form action="/usuarios/agregar" method="post">
-        <input name="nombre_usuario" placeholder="Usuario" required>
-        <input name="nombre" placeholder="Nombre" required>
-        <input name="prim_apellido" placeholder="Primer Apellido" required>
-        <input name="seg_apellido" placeholder="Segundo Apellido">
-        <input name="correo" type="email" placeholder="Correo" required>
-        <input name="contrasena" type="password" placeholder="Contraseña" required>
-
-        <!-- Select dinámico para roles -->
-        <select name="id_rol" required>
-            <option th:each="rol : ${roles}" 
-                    th:value="${rol.id}" 
-                    th:text="${rol.nombre}">
-            </option>
-        </select>
-
-        <input name="activo" placeholder="Activo (Y/N)" required>
-        <button type="submit">Agregar Usuario</button>
-    </form>
-    <div th:insert="~{TemplateHeadFoot :: footer}"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="activo" class="form-label">Activo (Y/N)</label>
+                        <input name="activo" id="activo" class="form-control bg-dark text-light"
+                            placeholder="Activo (Y/N)" required>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success w-100">Agregar Usuario</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer th:fragment="footer" class="bg-dark text-white p-2 text-center" style="margin-top: 52px">
+        <h2>Contáctanos</h2>
+        <h4>+506 8745 2819</h4>
+        <div style="margin: 10px 0;">
+            <i class="fa-brands fa-facebook fa-xl" style="color: #0058f0; margin: 0 10px;"></i>
+            <i class="fa-brands fa-instagram fa-xl" style="color: #b00303; margin: 0 10px;"></i>
+            <i class="fa-brands fa-x-twitter fa-xl" style="color: #ffffff; margin: 0 10px;"></i>
+            <i class="fa-brands fa-whatsapp fa-xl" style="color: #28e901; margin: 0 10px;"></i>
+        </div>
+        <p style="margin-top: 8px">© La Zompopa Todos los Derechos Reservados</p>
+    </footer>
 </body>
+
 </html>
