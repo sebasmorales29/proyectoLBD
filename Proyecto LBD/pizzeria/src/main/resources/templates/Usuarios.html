@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestión de Usuarios</title>
+</head>
+<body>
+    <h1>Gestión de Usuarios</h1>
+
+    <!-- Tabla para listar usuarios -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.id_usuario}"></td>
+                <td th:text="${usuario.nombre_usuario}"></td>
+                <td th:text="${usuario.nombre}"></td>
+                <td th:text="${usuario.prim_apellido}"></td>
+                <td th:text="${usuario.seg_apellido}"></td>
+                <td th:text="${usuario.correo}"></td>
+                <td th:text="${usuario.rol}"></td>
+                <td th:text="${usuario.activo}"></td>
+                <td>
+                    <!-- Formulario para editar -->
+                    <form action="/usuarios/editar" method="post">
+                        <input type="hidden" name="id_usuario" th:value="${usuario.id_usuario}">
+                        <input name="nombre_usuario" th:value="${usuario.nombre_usuario}" required>
+                        <input name="nombre" th:value="${usuario.nombre}" required>
+                        <input name="prim_apellido" th:value="${usuario.prim_apellido}" required>
+                        <input name="seg_apellido" th:value="${usuario.seg_apellido}">
+                        <input name="correo" type="email" th:value="${usuario.correo}" required>
+                        <input name="contrasena" type="password" th:value="${usuario.contrasena}" required>
+                        <select name="id_rol" required>
+                            <option th:each="rol : ${roles}" 
+                                    th:value="${rol.id}" 
+                                    th:selected="${usuario.id_rol == rol.id}"
+                                    th:text="${rol.nombre}">
+                            </option>
+                        </select>
+                        <input name="activo" th:value="${usuario.activo}" required>
+                        <button type="submit">Editar Usuario</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Agregar Usuario</h2>
+    <!-- Formulario para agregar usuario -->
+    <form action="/usuarios/agregar" method="post">
+        <input name="nombre_usuario" placeholder="Usuario" required>
+        <input name="nombre" placeholder="Nombre" required>
+        <input name="prim_apellido" placeholder="Primer Apellido" required>
+        <input name="seg_apellido" placeholder="Segundo Apellido">
+        <input name="correo" type="email" placeholder="Correo" required>
+        <input name="contrasena" type="password" placeholder="Contraseña" required>
+
+        <!-- Select dinámico para roles -->
+        <select name="id_rol" required>
+            <option th:each="rol : ${roles}" 
+                    th:value="${rol.id}" 
+                    th:text="${rol.nombre}">
+            </option>
+        </select>
+
+        <input name="activo" placeholder="Activo" required>
+        <button type="submit">Agregar Usuario</button>
+    </form>
+</body>
+</html>

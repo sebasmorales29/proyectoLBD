@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Categorias de productos</title>
+</head>
+<body>
+    <h1>Categorias de productos</h1>
+
+<form action="/categorias/agregar" method="post">
+    <input name="descripcion" placeholder="Descripción" required>
+    <select name="activo">
+        <option value="Y">Activo</option>
+        <option value="N">Inactivo</option>
+    </select>
+    <button type="submit">Agregar Categoría</button>
+</form>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="categoria : ${categorias}">
+            <td th:text="${categoria.id}"></td>
+            <td th:text="${categoria.descripcion}"></td>
+            <td th:text="${categoria.estado}"></td>
+            <td>
+                <!-- Formulario para editar -->
+                <form action="/categorias/editar" method="post">
+                    <input type="hidden" name="id" th:value="${categoria.id}">
+                    <input name="descripcion" th:value="${categoria.descripcion}" required>
+                    <select name="activo">
+                        <option value="Y">Activo</option>
+                        <option value="N">Inactivo</option>
+                    </select>
+                    <button type="submit">Editar</button>
+                </form>
+
+                <!-- Formulario para eliminar -->
+              
+            </td>
+        </tr>
+    </tbody>
+</table>
