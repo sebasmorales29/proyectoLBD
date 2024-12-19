@@ -81,7 +81,8 @@ CREATE OR REPLACE PACKAGE CRUD AS
         p_seg_apellido VARCHAR2,
         p_correo VARCHAR2,
         p_contrasena VARCHAR2,
-        p_id_rol NUMBER
+        p_id_rol NUMBER,
+        p_activo CHAR
     );
     
         PROCEDURE actualizar_usuario(
@@ -92,7 +93,8 @@ CREATE OR REPLACE PACKAGE CRUD AS
         p_seg_apellido VARCHAR2,
         p_correo VARCHAR2,
         p_contrasena VARCHAR2,
-        p_id_rol NUMBER
+        p_id_rol NUMBER,
+        p_estado CHAR
     );
     
         PROCEDURE eliminar_usuario(
