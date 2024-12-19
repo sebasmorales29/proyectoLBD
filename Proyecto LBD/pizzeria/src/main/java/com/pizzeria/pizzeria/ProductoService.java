@@ -13,12 +13,12 @@ public class ProductoService {
     public List<Producto> obtenerTodosLosProductos() {
         return productoRepository.findAll();
     }
-    public void agregarProducto(String nombre, String descripcion, Double precio, Integer existencias,String estado,  String categoria) {
-        productoRepository.agregarProducto(nombre, descripcion, precio, existencias, estado, categoria);
+    public void agregarProducto(String nombre, String descripcion, Double precio, Integer existencias,String activo,  Integer id_categoria) {
+        productoRepository.agregarProducto(nombre, descripcion, precio, existencias, activo, id_categoria);
     }
 
-    public void editarProducto(Long id, String nombre, String descripcion, Double precio, Integer existencias,String estado,  String categoria) {
-        productoRepository.editarProducto(id, nombre, descripcion, precio, existencias, estado, categoria);
+    public void editarProducto(Long id, String nombre, String descripcion, Double precio, Integer existencias,String activo,  Integer id_categoria) {
+        productoRepository.editarProducto(id, nombre, descripcion, precio, existencias, activo, id_categoria);
     }
 
     public void eliminarProducto(Long id) {

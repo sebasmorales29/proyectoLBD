@@ -4,13 +4,38 @@ CREATE OR REPLACE VIEW v_categoria AS
 SELECT id_categoria, descripcion, activo
 FROM Categoria;
 
+
+
+
+
 CREATE OR REPLACE VIEW v_producto AS
-SELECT id_producto, nombre, descripcion, precio, existencias, activo, id_categoria
-FROM Producto;
+SELECT 
+    p.id_producto, 
+    p.nombre, 
+    p.descripcion, 
+    p.precio, 
+    p.existencias, 
+    p.id_categoria, 
+    CASE 
+        WHEN p.activo = 'Y' THEN 'Activa'
+        ELSE 'Inactiva'
+    END AS activo,
+    c.descripcion AS categoria -- Alias para la categoría
+FROM Producto p
+JOIN categoria c ON p.id_categoria = c.id_categoria;
+
+
+
+
 
 CREATE OR REPLACE VIEW v_ofertas AS
 SELECT id_ofertas, nombre, descripcion, activo
 FROM Ofertas;
+
+
+
+
+
 
 CREATE OR REPLACE VIEW v_rol AS
 SELECT id_rol, nombre

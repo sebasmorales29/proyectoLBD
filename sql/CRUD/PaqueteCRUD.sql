@@ -94,7 +94,7 @@ CREATE OR REPLACE PACKAGE CRUD AS
         p_correo VARCHAR2,
         p_contrasena VARCHAR2,
         p_id_rol NUMBER,
-        p_estado CHAR
+        p_activo CHAR
     );
     
         PROCEDURE eliminar_usuario(

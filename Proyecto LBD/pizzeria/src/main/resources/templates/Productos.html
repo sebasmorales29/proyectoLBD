@@ -14,14 +14,20 @@
     <form action="/productos/agregar" method="post">
         <input name="nombre" placeholder="Nombre" required>
         <input name="descripcion" placeholder="Descripción" required>
-        <input name="precio" placeholder="Precio" required>
-        <input name="existencias" placeholder="Existencias" required>
-        <select name="estado">
+        <input name="precio" type="number" step="0.01" placeholder="Precio" required>
+        <input name="existencias" type="number" placeholder="Existencias" required>
+        <select name="activo" required>
             <option value="Y">Activo</option>
             <option value="N">Inactivo</option>
         </select>
-        <input name="categoria" placeholder="Categoria" required>
-        <button type="submit">Agregar Categoría</button>
+        <select name="id_categoria" required>
+            <option value="" disabled selected>Seleccionar Categoría</option>
+            <option th:each="categoria : ${categorias}" 
+                    th:value="${categoria.id}" 
+                    th:text="${categoria.descripcion}">
+            </option>
+        </select>
+        <button type="submit">Agregar Producto</button>
     </form>
     <table border="1">
         <thead>
@@ -43,7 +49,7 @@
                 <td th:text="${producto.descripcion}"></td>
                 <td th:text="${producto.existencias}"></td>
                 <td th:text="${producto.categoria}"></td>
-                <td th:text="${producto.estado}"></td>
+                <td th:text="${producto.activo}"></td>
                 <td>
                     <form action="/productos/editar" method="post">
                         <input type="hidden" name="id" th:value="${producto.id}">
@@ -51,10 +57,16 @@
                         <input name="descripcion" th:value="${producto.descripcion}" required>
                         <input name="precio" th:value="${producto.precio}" required>
                         <input name="existencias" th:value="${producto.existencias}" required>
-                        <select name="estado">
-                            <option value="Y">Activo</option>
-                            <option value="N">Inactivo</option>
-                            <input name="categoria" th:value="${producto.categoria}" required>
+                        <select name="activo" required>
+                            <option value="Y" th:selected="${producto.activo == 'Y'}">Activo</option>
+                            <option value="N" th:selected="${producto.activo == 'N'}">Inactivo</option>
+                        </select>
+                        
+                        <select name="id_categoria" required>
+                            <option th:each="categoria : ${categorias}"
+                                    th:value="${categoria.id}"
+                                    th:text="${categoria.descripcion}">
+                            </option>
                         </select>
                         <button type="submit">Editar</button>
                     </form>

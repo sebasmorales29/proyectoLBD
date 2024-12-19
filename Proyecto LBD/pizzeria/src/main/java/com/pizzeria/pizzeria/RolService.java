@@ -12,4 +12,17 @@ public class RolService {
     public List<Rol> obtenerRoles() {
         return rolRepository.findAll(); // Devuelve todos los roles de la tabla
     }
+
+
+
+    public void agregarRol(String nombre) {
+        rolRepository.agregarRol(nombre);
+    }
+
+
+    public void editarRol(Long id, String nombre) {
+        rolRepository.editarRol(id, nombre);
+    }
+
+
 }

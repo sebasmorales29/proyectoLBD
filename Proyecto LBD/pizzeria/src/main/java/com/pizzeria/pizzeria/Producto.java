@@ -25,11 +25,22 @@ public class Producto {
     @Column(name = "EXISTENCIAS")
     private Integer existencias;
 
-    @Column(name = "ESTADO")
-    private String estado;
+    @Column(name = "ACTIVO")
+    private String activo;
 
     @Column(name = "CATEGORIA")
     private String categoria;
+
+    @Column(name = "ID_CATEGORIA")
+    private Integer id_categoria;
+
+    public Integer getId_categoria() {
+        return id_categoria;
+    }
+
+    public void setId_categoria(Integer id_categoria) {
+        this.id_categoria = id_categoria;
+    }
 
     // Getters y Setters
     public Long getId() {
@@ -72,12 +83,12 @@ public class Producto {
         this.existencias = existencias;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getActivo() {
+        return activo;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setActivo(String activo) {
+        this.activo = activo;
     }
 
     public String getCategoria() {
