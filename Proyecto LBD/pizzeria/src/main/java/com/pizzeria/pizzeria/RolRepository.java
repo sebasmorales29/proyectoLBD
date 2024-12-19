@@ -11,7 +11,7 @@ public interface RolRepository extends JpaRepository<Rol, Long> {
     @Query(value = "{CALL CRUD.INSERTAR_ROL(:nombre)}", nativeQuery = true)
     void agregarRol(@Param("nombre") String nombre);
 
-    @Query(value = "{CALL CRUD.ELIMINAR_Rol(:id)}", nativeQuery = true)
+    @Query(value = "{CALL CRUD.ELIMINAR_ROL(:id)}", nativeQuery = true)
     void eliminarRol(@Param("id") Long id);
 
     @Query(value = "{CALL CRUD.MODIFICAR_ROL(:id, :nombre)}", nativeQuery = true)

@@ -6,23 +6,22 @@ import java.util.List;
 
 @Service
 public class RolService {
+
     @Autowired
-    private RolRepository rolRepository;
+    private RolRepository RolRepository;
 
     public List<Rol> obtenerRoles() {
-        return rolRepository.findAll(); // Devuelve todos los roles de la tabla
+        return RolRepository.findAll();
     }
-
-
-
     public void agregarRol(String nombre) {
-        rolRepository.agregarRol(nombre);
+        RolRepository.agregarRol(nombre);
     }
-
 
     public void editarRol(Long id, String nombre) {
-        rolRepository.editarRol(id, nombre);
+        RolRepository.editarRol(id, nombre);
     }
 
-
+    public void eliminarRol(Long id) {
+        RolRepository.eliminarRol(id);
+    }
 }
