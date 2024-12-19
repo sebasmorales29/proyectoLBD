@@ -1,10 +1,8 @@
 package com.pizzeria.pizzeria;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
 
 @Service
 public class CategoriaService {
@@ -14,6 +12,10 @@ public class CategoriaService {
 
     public List<Categoria> obtenerTodasLasCategorias() {
         return categoriaRepository.findAll();
+    }
+
+    public Long obtenerTotalCategorias() {
+        return categoriaRepository.count();
     }
 
     public void agregarCategoria(String descripcion, String activo) {

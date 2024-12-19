@@ -16,4 +16,6 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
     @Query(value = "{CALL CRUD.ELIMINAR_CATEGORIA(:id)}", nativeQuery = true)
     void eliminarCategoria(@Param("id") Long id);
+    @Query(value = "SELECT total_categorias FROM v_total_categorias", nativeQuery = true)
+    Integer obtenerTotalCategorias();
 }

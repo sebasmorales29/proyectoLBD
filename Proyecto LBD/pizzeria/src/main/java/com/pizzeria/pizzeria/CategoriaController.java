@@ -21,6 +21,7 @@ public class CategoriaController {
     @GetMapping
     public String listarCategorias(Model model) {
         model.addAttribute("categorias", categoriaService.obtenerTodasLasCategorias());
+        model.addAttribute("totalCategorias", categoriaService.obtenerTotalCategorias());
         return "/categorias";
     }
 

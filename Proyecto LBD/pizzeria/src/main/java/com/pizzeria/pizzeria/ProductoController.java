@@ -24,6 +24,7 @@ public class ProductoController {
     @GetMapping
     public String listarProductos(Model model) {
         model.addAttribute("productos", productoService.obtenerTodosLosProductos());
+        model.addAttribute("totalProductos", productoService.obtenerTotalProductos());
     model.addAttribute("categorias", categoriaService.obtenerTodasLasCategorias()); // Cargar categorías
     return "/productos";
     }
